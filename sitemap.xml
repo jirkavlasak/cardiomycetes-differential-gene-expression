@@ -2,20 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/report/</loc>
+    <loc>https://jirkavlasak.github.io/cardiomycetes-differential-gene-expression/report/</loc>
   </url><url>
-    <loc>http://localhost:1313/data-preprocessing/</loc>
+    <loc>https://jirkavlasak.github.io/cardiomycetes-differential-gene-expression/data-preprocessing/</loc>
   </url><url>
-    <loc>http://localhost:1313/methodology/</loc>
+    <loc>https://jirkavlasak.github.io/cardiomycetes-differential-gene-expression/methodology/</loc>
   </url><url>
-    <loc>http://localhost:1313/gallery/</loc>
+    <loc>https://jirkavlasak.github.io/cardiomycetes-differential-gene-expression/gallery/</loc>
   </url><url>
-    <loc>http://localhost:1313/ai-analysis/</loc>
+    <loc>https://jirkavlasak.github.io/cardiomycetes-differential-gene-expression/ai-analysis/</loc>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://jirkavlasak.github.io/cardiomycetes-differential-gene-expression/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://jirkavlasak.github.io/cardiomycetes-differential-gene-expression/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://jirkavlasak.github.io/cardiomycetes-differential-gene-expression/tags/</loc>
   </url>
 </urlset>

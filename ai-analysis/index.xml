@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AI Analysis &amp; Comparison on AGE: Space Heart RNA-Seq</title>
-    <link>http://localhost:1313/ai-analysis/</link>
+    <link>https://jirkavlasak.github.io/cardiomycetes-differential-gene-expression/ai-analysis/</link>
     <description>Recent content in AI Analysis &amp; Comparison on AGE: Space Heart RNA-Seq</description>
     <generator>Hugo 0.125.0</generator>
     <language>en</language>
-    <atom:link href="http://localhost:1313/ai-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://jirkavlasak.github.io/cardiomycetes-differential-gene-expression/ai-analysis/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
