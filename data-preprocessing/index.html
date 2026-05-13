@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <title>Data pre-processing</title>
+    <meta name="description" content=''>
+    <meta http-equiv="content-language" content="en">
+
+    
+    <link rel="icon" href="/favicon.ico">
+
+    <meta property="og:url" content="http://localhost:1313/data-preprocessing/">
+  <meta property="og:site_name" content="AGE: Space Heart RNA-Seq">
+  <meta property="og:title" content="Data pre-processing">
+  <meta property="og:description" content="Data Preprocessing Pipeline From Raw Single-End Reads to Quantified Transcripts
+Before executing the computational pipeline, it is crucial to understand the origin and experimental design of the dataset. The data utilized in this project was retrieved from the NCBI Sequence Read Archive (SRA) under BioProject PRJNA947970.
+Dataset Overview The dataset comprises 12 high-depth transcriptomic samples of human cardiomyocytes (derived from the IMR90 cell line). The sequencing was performed using the Illumina NovaSeq 6000 platform, producing Single-End RNA-Seq reads.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary"><meta name="twitter:title" content="Data pre-processing">
+<meta name="twitter:description" content="">
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/favicon.png" >
+    <link rel="canonical" href="http://localhost:1313/data-preprocessing/">
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
+
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/theme.min.0777c8c3811a056f56ce80c07bab6dcf20bb1074f285002d9fc90e0c70337b8c.css">
+
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.bootstrap5.min.css" integrity="sha384-3ptzuE+Rcpo/oIGgcQ40Oz3iGZ2GxGeQ/RZEyYncPivDl3lFBCI4eiS7PZAghYuS" crossorigin="anonymous">
+
+    
+    
+</head>
+<body>
+        <a class="visually-hidden-focusable" href="#content">Skip to main content</a>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white pb-0">
+    <div class="container">
+        
+        <div class="d-flex navbar-brand">
+           
+
+          <a class="navbar-brand" href="/">
+  
+    <img src="/images/logoVSCHT_zkr_zakl.jpg" alt="Logo VŠCHT" style="height: 40px;">
+  
+</a>
+        </div>
+
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapseBottom"
+                aria-controls="navbarCollapseBottom" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="d-flex flex-column align-items-end collapse navbar-collapse">
+
+            
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto navbar-top">
+                    
+                    
+                    
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light pt-0 pb-1">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="navbarCollapseBottom">
+
+            
+            <hr class="d-lg-none">
+
+            
+            <div class="d-lg-none">
+                
+                
+
+                
+                
+                <div class="main_menu_item pb-1">
+                    
+                    
+                    
+                    <a href="/report/">
+                        The Report
+                    </a>
+                    
+                </div>
+                
+                
+                <div class="main_menu_item pb-1">
+                    
+                    
+                    
+                    <a href="/data-preprocessing/">
+                        Data Preprocessing
+                    </a>
+                    
+                </div>
+                
+                
+                <div class="main_menu_item pb-1">
+                    
+                    
+                    
+                    <a href="/methodology/">
+                        Methodology &amp; Code
+                    </a>
+                    
+                </div>
+                
+                
+                <div class="main_menu_item pb-1">
+                    
+                    
+                    
+                    <a href="/gallery/">
+                        Extended Gallery
+                    </a>
+                    
+                </div>
+                
+                
+                <div class="main_menu_item pb-1">
+                    
+                    
+                    
+                    <a href="/ai-analysis/">
+                        AI analysis and study comparsion
+                    </a>
+                    
+                </div>
+                
+
+                
+            </div>
+            <hr class="d-lg-none">
+
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container mb-3 d-none d-lg-block">
+    <div class="row row-cols-auto">
+        
+        
+        
+        <div class="col-auto main_menu_item">
+             
+             
+            
+            <a href="/report/">The Report</a>
+            
+        </div>
+        
+        <div class="col-auto main_menu_item">
+             
+             
+            
+            <a href="/data-preprocessing/">Data Preprocessing</a>
+            
+        </div>
+        
+        <div class="col-auto main_menu_item">
+             
+             
+            
+            <a href="/methodology/">Methodology &amp; Code</a>
+            
+        </div>
+        
+        <div class="col-auto main_menu_item">
+             
+             
+            
+            <a href="/gallery/">Extended Gallery</a>
+            
+        </div>
+        
+        <div class="col-auto main_menu_item">
+             
+             
+            
+            <a href="/ai-analysis/">AI analysis and study comparsion</a>
+            
+        </div>
+        
+        
+    </div>
+</div>
+<div class="header"
+  style="background-image: linear-gradient(to bottom, rgba(55, 174, 148, 0.52), rgba(55, 174, 148, 0.73)), url('/images/banner.jpg');background-size: cover;background-position: center;">
+  <div class="container">
+    <h2 id="home-banner">
+      Data pre-processing
+      </h2>
+  </div>
+</div>
+
+<nav class="breadcrumbs" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Cardiomyocytes in Microgravity</a></li>
+      <li class="breadcrumb-item"><a href="/data-preprocessing/">Data pre-processing</a></li>
+    </ol>
+  </div>
+</nav>
+
+
+        
+        
+            <div class="container content" id="content">
+
+<h1 id="data-preprocessing-pipeline">Data Preprocessing Pipeline</h1>
+<p><strong>From Raw Single-End Reads to Quantified Transcripts</strong></p>
+<p>Before executing the computational pipeline, it is crucial to understand the origin and experimental design of the dataset. The data utilized in this project was retrieved from the NCBI Sequence Read Archive (SRA) under BioProject <strong>PRJNA947970</strong>.</p>
+<h3 id="dataset-overview">Dataset Overview</h3>
+<p>The dataset comprises 12 high-depth transcriptomic samples of human cardiomyocytes (derived from the IMR90 cell line). The sequencing was performed using the <strong>Illumina NovaSeq 6000</strong> platform, producing Single-End RNA-Seq reads.</p>
+<p>The core objective of the experiment is to investigate the effects of spaceflight and microgravity on cardiac muscle cells. The 12 samples are evenly divided into two distinct experimental conditions:</p>
+<p><strong>ISS uG (Microgravity):</strong> 6 samples (SRR23949301 – SRR23949306) cultured aboard the International Space Station under true microgravity.
+<strong>ISS 1G (Normal Gravity):</strong> 6 samples (SRR23949295 – SRR23949300) cultured under standard 1G conditions, serving as the ground-truth control group.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Download raw single-end FASTQ files using SRA Toolkit and the manifest</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> read SRR; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Processing download for: </span><span style="color:#e6db74">${</span>SRR<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    fasterq-dump <span style="color:#e6db74">${</span>SRR<span style="color:#e6db74">}</span> --outdir data/
+</span></span><span style="display:flex;"><span>    gzip data/<span style="color:#e6db74">${</span>SRR<span style="color:#e6db74">}</span>.fastq
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span> &lt; list_of_srrs.txt
+</span></span></code></pre></div><p>A rigorous bioinformatics pipeline was implemented to process 12 single-end Illumina RNA-Seq samples (SRR23949295 – SRR23949306). The core objective is to investigate the effects of spaceflight and microgravity on cardiomyocyte transcriptome.
+To systematically fetch this data, we utilized the SRA Toolkit alongside the metadata manifest (<code>SraRunTable.csv</code>).</p>
+<h3 id="conceptual-pipeline-overview">Conceptual Pipeline Overview</h3>
+<p>The diagram below visualizes the end-to-end data flow, illustrating how raw sequences are cleaned, validated, and quantified to generate a reliable gene expression matrix.
+<figure><img src="/images/diagram.png"
+    alt="Diagram" width="60%">
+</figure>
+</p>
+<h3 id="1-initial-quality-assessment-fastqc">1. Initial Quality Assessment (FastQC)</h3>
+<p>We first assessed the quality of the raw sequence data using <strong>FastQC</strong>. Initial reports highlighted the presence of Illumina adapter sequences and typical quality drop-offs at the 3&rsquo; ends of the reads, necessitating quality and adapter trimming.
+<img src="/images/fastqc_overall.png" alt="FastQC Report"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Run FastQC on all raw sequence files</span>
+</span></span><span style="display:flex;"><span>fastqc -t <span style="color:#ae81ff">8</span> data/*.fastq.gz -o fastqc_results/
+</span></span></code></pre></div><h3 id="2-adapter--quality-trimming-trimmomatic">2. Adapter &amp; Quality Trimming (Trimmomatic)</h3>
+<p>To remove technical artifacts, we utilized Trimmomatic in Single-End (SE) mode. We provided a custom adapter file (MyAdapters.fa) to accurately clip residual Illumina adapters and employed a sliding window approach (Q20) to trim low-quality bases. The trimming was highly successful, with an average survival rate of ~99.94% across all samples.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Trimming with custom adapters and quality thresholds</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> file in data/*.fastq.gz; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    base_name<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>basename <span style="color:#e6db74">${</span>file<span style="color:#e6db74">}</span> .fastq.gz<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    trimmomatic SE -threads <span style="color:#ae81ff">8</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>         <span style="color:#e6db74">${</span>file<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>         trimmed_data/<span style="color:#e6db74">${</span>base_name<span style="color:#e6db74">}</span>_trimmed.fq.gz <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>         ILLUMINACLIP:MyAdapters.fa:2:30:10 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>         LEADING:3 TRAILING:3 SLIDINGWINDOW:4:20 MINLEN:36 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>         2&gt; trim_logs/<span style="color:#e6db74">${</span>base_name<span style="color:#e6db74">}</span>_trimmomatic.log
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><h3 id="3-ribosomal-rna-depletion-sortmerna">3. Ribosomal RNA Depletion (SortMeRNA)</h3>
+<p>Cardiomyocyte RNA extractions often contain high levels of ribosomal RNA (rRNA), which can bias downstream transcript quantification. To ensure absolute purity, the trimmed reads were filtered against the SortMeRNA default ribosomal database.</p>
+<p>The results indicated an exceptionally high-quality library preparation: on average, only <strong>~3.96%</strong> of the reads were identified as residual rRNA. These were successfully depleted, leaving approximately <strong>96%</strong> of the reads as pure, highly enriched RNA for quantification.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Deplete ribosomal RNA to enrich for mRNA sequences</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> file in trimmed_data/*_trimmed.fq.gz; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    base<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>basename <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> _trimmed.fq.gz<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    sortmerna --ref ./sortmerna_db/smr_v4.3_default_db.fasta <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>              --reads <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>              --workdir <span style="color:#e6db74">&#34;workdir_</span><span style="color:#e6db74">${</span>base<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>              --aligned <span style="color:#e6db74">&#34;clean_data/</span><span style="color:#e6db74">${</span>base<span style="color:#e6db74">}</span><span style="color:#e6db74">_rRNA&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>              --other <span style="color:#e6db74">&#34;clean_data/</span><span style="color:#e6db74">${</span>base<span style="color:#e6db74">}</span><span style="color:#e6db74">_non_rRNA&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>              --fastx <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>              --threads <span style="color:#ae81ff">8</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><h3 id="4-transcript-quantification-salmon">4. Transcript Quantification (Salmon)</h3>
+<p>The highly purified, rRNA-depleted reads were directly quantified against the human reference transcriptome (Gencode v44) using Salmon&rsquo;s fast, alignment-free methodology.</p>
+<p>The quantification results were outstanding. Across all 12 samples, the mapping rate ranged from <strong>94.1% to 95.3%</strong>, achieving an exceptional average mapping rate of <strong>~94.8%</strong>. These exceptionally high alignment rates confirm the purity of the preprocessed libraries and provide a highly reliable foundation for the subsequent Differential Expression Analysis.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Quantify transcripts against the human reference index</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> file in clean_data/*_non_rRNA.fq.gz; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    base<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>basename <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> _non_rRNA.fq.gz<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    salmon quant -i salmon_prep/salmon_index_human -l A <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                 -r <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                 -o salmon_quants/<span style="color:#e6db74">${</span>base<span style="color:#e6db74">}</span>_quant
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><h3 id="5-final-pipeline-validation-multiqc">5. Final Pipeline Validation (MultiQC)</h3>
+<p>All logs and QC metrics from FastQC, Trimmomatic, SortMeRNA, and Salmon were compiled into a single interactive report for final validation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Aggregate all individual tool reports into a single interactive dashboard</span>
+</span></span><span style="display:flex;"><span>multiqc . -f -o final_multiqc_report/
+</span></span></code></pre></div><p><strong>Explore the interactive MultiQC report below:</strong></p>
+<!-- raw HTML omitted -->
+<p><a href="/reports/multiqc_report.html">Open Full-Screen Report</a></p>
+
+
+
+            </div>
+        
+<footer class="container border-top mt-5 mb-2">
+  <div class="row border-bottom">
+
+  <div class="d-flex justify-content-center small mt-2">
+    <small> Jiri Vlasak and Tobias Krynek</small>
+  </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.datatables.net/2.1.4/js/dataTables.js" integrity="sha384-bhTEuCvZn/7LkLAhDKIriigeZtnWpmv3f43HorHIijvhb76eN7sQBRC4PkIhe23S" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/2.1.4/js/dataTables.bootstrap5.js" integrity="sha384-ytWx70TEZNWKvhA4mV4nQPHLRzPJeBf42voNnsXOSCv7ZxlBWQIceO1G8bJirjxl" crossorigin="anonymous"></script>
+
+
+<script lang="js">
+  document.addEventListener("DOMContentLoaded", function() {
+    new DataTable('table')
+  })
+</script></body>
+</html>

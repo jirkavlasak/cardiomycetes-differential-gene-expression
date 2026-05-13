@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <title>Methodology &amp; Code</title>
+    <meta name="description" content=''>
+    <meta http-equiv="content-language" content="en">
+
+    
+    <link rel="icon" href="/favicon.ico">
+
+    <meta property="og:url" content="http://localhost:1313/methodology/">
+  <meta property="og:site_name" content="AGE: Space Heart RNA-Seq">
+  <meta property="og:title" content="Methodology &amp; Code">
+  <meta property="og:description" content="Methodology: Downstream Analysis Pipeline From Raw Counts to Biological Pathways
+This section details the analytical pipeline used to process the transcriptomic data after the initial preprocessing (FastQC, Trimmomatic, and Salmon quantification). The entire downstream analysis was implemented in Python using pydeseq2, gseapy, and seaborn.
+1. Data Import and Normalization Raw transcript counts from Salmon (quant.sf files) were aggregated into a master count matrix. Before generating exploratory plots, the data required normalization to account for library size differences and heteroscedasticity.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary"><meta name="twitter:title" content="Methodology &amp; Code">
+<meta name="twitter:description" content="">
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/favicon.png" >
+    <link rel="canonical" href="http://localhost:1313/methodology/">
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
+
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/theme.min.0777c8c3811a056f56ce80c07bab6dcf20bb1074f285002d9fc90e0c70337b8c.css">
+
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.bootstrap5.min.css" integrity="sha384-3ptzuE+Rcpo/oIGgcQ40Oz3iGZ2GxGeQ/RZEyYncPivDl3lFBCI4eiS7PZAghYuS" crossorigin="anonymous">
+
+    
+    
+</head>
+<body>
+        <a class="visually-hidden-focusable" href="#content">Skip to main content</a>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white pb-0">
+    <div class="container">
+        
+        <div class="d-flex navbar-brand">
+           
+
+          <a class="navbar-brand" href="/">
+  
+    <img src="/images/logoVSCHT_zkr_zakl.jpg" alt="Logo VŠCHT" style="height: 40px;">
+  
+</a>
+        </div>
+
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapseBottom"
+                aria-controls="navbarCollapseBottom" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="d-flex flex-column align-items-end collapse navbar-collapse">
+
+            
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto navbar-top">
+                    
+                    
+                    
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light pt-0 pb-1">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="navbarCollapseBottom">
+
+            
+            <hr class="d-lg-none">
+
+            
+            <div class="d-lg-none">
+                
+                
+
+                
+                
+                <div class="main_menu_item pb-1">
+                    
+                    
+                    
+                    <a href="/report/">
+                        The Report
+                    </a>
+                    
+                </div>
+                
+                
+                <div class="main_menu_item pb-1">
+                    
+                    
+                    
+                    <a href="/data-preprocessing/">
+                        Data Preprocessing
+                    </a>
+                    
+                </div>
+                
+                
+                <div class="main_menu_item pb-1">
+                    
+                    
+                    
+                    <a href="/methodology/">
+                        Methodology &amp; Code
+                    </a>
+                    
+                </div>
+                
+                
+                <div class="main_menu_item pb-1">
+                    
+                    
+                    
+                    <a href="/gallery/">
+                        Extended Gallery
+                    </a>
+                    
+                </div>
+                
+                
+                <div class="main_menu_item pb-1">
+                    
+                    
+                    
+                    <a href="/ai-analysis/">
+                        AI analysis and study comparsion
+                    </a>
+                    
+                </div>
+                
+
+                
+            </div>
+            <hr class="d-lg-none">
+
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container mb-3 d-none d-lg-block">
+    <div class="row row-cols-auto">
+        
+        
+        
+        <div class="col-auto main_menu_item">
+             
+             
+            
+            <a href="/report/">The Report</a>
+            
+        </div>
+        
+        <div class="col-auto main_menu_item">
+             
+             
+            
+            <a href="/data-preprocessing/">Data Preprocessing</a>
+            
+        </div>
+        
+        <div class="col-auto main_menu_item">
+             
+             
+            
+            <a href="/methodology/">Methodology &amp; Code</a>
+            
+        </div>
+        
+        <div class="col-auto main_menu_item">
+             
+             
+            
+            <a href="/gallery/">Extended Gallery</a>
+            
+        </div>
+        
+        <div class="col-auto main_menu_item">
+             
+             
+            
+            <a href="/ai-analysis/">AI analysis and study comparsion</a>
+            
+        </div>
+        
+        
+    </div>
+</div>
+<div class="header"
+  style="background-image: linear-gradient(to bottom, rgba(55, 174, 148, 0.52), rgba(55, 174, 148, 0.73)), url('/images/banner.jpg');background-size: cover;background-position: center;">
+  <div class="container">
+    <h2 id="home-banner">
+      Methodology &amp; Code
+      </h2>
+  </div>
+</div>
+
+<nav class="breadcrumbs" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Cardiomyocytes in Microgravity</a></li>
+      <li class="breadcrumb-item"><a href="/methodology/">Methodology &amp; Code</a></li>
+    </ol>
+  </div>
+</nav>
+
+
+        
+        
+            <div class="container content" id="content">
+
+<h1 id="methodology-downstream-analysis-pipeline">Methodology: Downstream Analysis Pipeline</h1>
+<p><strong>From Raw Counts to Biological Pathways</strong></p>
+<p>This section details the analytical pipeline used to process the transcriptomic data after the initial preprocessing (FastQC, Trimmomatic, and Salmon quantification). The entire downstream analysis was implemented in Python using <code>pydeseq2</code>, <code>gseapy</code>, and <code>seaborn</code>.</p>
+<h3 id="1-data-import-and-normalization">1. Data Import and Normalization</h3>
+<p>Raw transcript counts from Salmon (<code>quant.sf</code> files) were aggregated into a master count matrix. Before generating exploratory plots, the data required normalization to account for library size differences and heteroscedasticity. We utilized the <strong>Variance Stabilizing Transformation (VST)</strong> from the <code>pydeseq2</code> package.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pydeseq2.dds <span style="color:#f92672">import</span> DeseqDataSet
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load metadata and prepare sample associations</span>
+</span></span><span style="display:flex;"><span>meta <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;SraRunTable.csv&#34;</span>)
+</span></span><span style="display:flex;"><span>coldata <span style="color:#f92672">=</span> meta[[<span style="color:#e6db74">&#39;Run&#39;</span>, <span style="color:#e6db74">&#39;treatment&#39;</span>]]<span style="color:#f92672">.</span>copy()
+</span></span><span style="display:flex;"><span>coldata<span style="color:#f92672">.</span>rename(columns<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;Run&#39;</span>: <span style="color:#e6db74">&#39;sample&#39;</span>, <span style="color:#e6db74">&#39;treatment&#39;</span>: <span style="color:#e6db74">&#39;condition&#39;</span>}, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>coldata<span style="color:#f92672">.</span>set_index(<span style="color:#e6db74">&#39;sample&#39;</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Construct the raw count matrix from Salmon output</span>
+</span></span><span style="display:flex;"><span>counts_list <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> sample_id <span style="color:#f92672">in</span> coldata<span style="color:#f92672">.</span>index:
+</span></span><span style="display:flex;"><span>    file_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(<span style="color:#e6db74">&#34;salmon_quants&#34;</span>, <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>sample_id<span style="color:#e6db74">}</span><span style="color:#e6db74">_quant&#34;</span>, <span style="color:#e6db74">&#34;quant.sf&#34;</span>)
+</span></span><span style="display:flex;"><span>    df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(file_path, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#39;</span>, usecols<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;Name&#39;</span>, <span style="color:#e6db74">&#39;NumReads&#39;</span>])
+</span></span><span style="display:flex;"><span>    df<span style="color:#f92672">.</span>set_index(<span style="color:#e6db74">&#39;Name&#39;</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    df<span style="color:#f92672">.</span>columns <span style="color:#f92672">=</span> [sample_id]
+</span></span><span style="display:flex;"><span>    counts_list<span style="color:#f92672">.</span>append(df)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>count_matrix <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>concat(counts_list, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>T<span style="color:#f92672">.</span>round()<span style="color:#f92672">.</span>astype(int)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialize DESeq2 Dataset and apply Variance Stabilizing Transformation (VST)</span>
+</span></span><span style="display:flex;"><span>dds <span style="color:#f92672">=</span> DeseqDataSet(counts<span style="color:#f92672">=</span>count_matrix, metadata<span style="color:#f92672">=</span>coldata, design_factors<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;condition&#34;</span>, n_cpus<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>)
+</span></span><span style="display:flex;"><span>dds<span style="color:#f92672">.</span>vst()
+</span></span><span style="display:flex;"><span>vst_df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(dds<span style="color:#f92672">.</span>layers[<span style="color:#e6db74">&#39;vst_counts&#39;</span>], index<span style="color:#f92672">=</span>dds<span style="color:#f92672">.</span>obs_names, columns<span style="color:#f92672">=</span>dds<span style="color:#f92672">.</span>var_names)
+</span></span></code></pre></div><h3 id="2-exploratory-data-analysis">2. Exploratory Data Analysis</h3>
+<p>To assess biological replicate consistency and rule out technical batch effects, we performed Principal Component Analysis (PCA) and Hierarchical Clustering using the top 500 most variable genes. We evaluated three principal components to ensure accurate spatial representation of the samples.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.decomposition <span style="color:#f92672">import</span> PCA
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy.spatial <span style="color:#f92672">import</span> distance
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> seaborn <span style="color:#66d9ef">as</span> sns
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Isolate the top 500 most variable genes across all samples</span>
+</span></span><span style="display:flex;"><span>top_genes <span style="color:#f92672">=</span> vst_df<span style="color:#f92672">.</span>var(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)<span style="color:#f92672">.</span>sort_values(ascending<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)<span style="color:#f92672">.</span>index[:<span style="color:#ae81ff">500</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Perform PCA</span>
+</span></span><span style="display:flex;"><span>pca <span style="color:#f92672">=</span> PCA(n_components<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>pca_results <span style="color:#f92672">=</span> pca<span style="color:#f92672">.</span>fit_transform(vst_df[top_genes])
+</span></span><span style="display:flex;"><span>pca_df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(pca_results, columns<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;PC1&#39;</span>, <span style="color:#e6db74">&#39;PC2&#39;</span>, <span style="color:#e6db74">&#39;PC3&#39;</span>], index<span style="color:#f92672">=</span>vst_df<span style="color:#f92672">.</span>index)<span style="color:#f92672">.</span>join(coldata)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate Euclidean sample distances for hierarchical clustering</span>
+</span></span><span style="display:flex;"><span>sample_dists <span style="color:#f92672">=</span> distance<span style="color:#f92672">.</span>squareform(distance<span style="color:#f92672">.</span>pdist(vst_df, metric<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;euclidean&#39;</span>))
+</span></span><span style="display:flex;"><span>dist_df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(sample_dists, index<span style="color:#f92672">=</span>vst_df<span style="color:#f92672">.</span>index, columns<span style="color:#f92672">=</span>vst_df<span style="color:#f92672">.</span>index)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generate clustered heatmap</span>
+</span></span><span style="display:flex;"><span>cg <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>clustermap(dist_df, cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Blues_r&#34;</span>, annot<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, fmt<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;.0f&#34;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">&#34;Sample_Distance_Heatmap.png&#34;</span>)
+</span></span></code></pre></div><h3 id="3-differential-expression-analysis-dea">3. Differential Expression Analysis (DEA)</h3>
+<p>Differential expression was modeled using the Negative Binomial distribution natively in pydeseq2. The contrast evaluated the effect of long-term microgravity (ISS uG) versus 1G ground controls. Strict thresholds were applied to define significantly altered genes: Adjusted P-value (FDR) &lt; 0.05 and |Log2 Fold Change| &gt; 1.0.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pydeseq2.ds <span style="color:#f92672">import</span> DeseqStats
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Fit the DESeq2 model</span>
+</span></span><span style="display:flex;"><span>dds<span style="color:#f92672">.</span>deseq2()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Extract statistics for the specific contrast (uG vs 1G)</span>
+</span></span><span style="display:flex;"><span>stat_res <span style="color:#f92672">=</span> DeseqStats(dds, contrast<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#39;condition&#39;</span>, <span style="color:#e6db74">&#39;ISS uG&#39;</span>, <span style="color:#e6db74">&#39;ISS 1G&#39;</span>))
+</span></span><span style="display:flex;"><span>stat_res<span style="color:#f92672">.</span>summary()
+</span></span><span style="display:flex;"><span>res_df <span style="color:#f92672">=</span> stat_res<span style="color:#f92672">.</span>results_df
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Filter for significant Differentially Expressed Genes (DEGs)</span>
+</span></span><span style="display:flex;"><span>sig_genes <span style="color:#f92672">=</span> res_df[(res_df[<span style="color:#e6db74">&#39;padj&#39;</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.05</span>) <span style="color:#f92672">&amp;</span> (res_df[<span style="color:#e6db74">&#39;log2FoldChange&#39;</span>]<span style="color:#f92672">.</span>abs() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1.0</span>)]
+</span></span></code></pre></div><p>Note: Transcript IDs (ENST&hellip;) were translated to official Gene Symbols using the mygene API prior to downstream pathway analysis.</p>
+<h3 id="4-pathway-and-functional-enrichment-analysis">4. Pathway and Functional Enrichment Analysis</h3>
+<p>To translate raw gene lists into biological meaning, we employed two distinct but complementary approaches using the gseapy library and the KEGG database.4.1 Over-Representation Analysis (ORA)ORA was performed using the strictly filtered list of significant DEGs to identify explicitly over-represented biochemical pathways. To circumvent internal filtering bugs in standard plotting libraries, visualizations were constructed manually using seaborn.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> gseapy <span style="color:#66d9ef">as</span> gp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Run Enrichr API for Over-Representation Analysis</span>
+</span></span><span style="display:flex;"><span>ora_res <span style="color:#f92672">=</span> gp<span style="color:#f92672">.</span>enrichr(
+</span></span><span style="display:flex;"><span>    gene_list<span style="color:#f92672">=</span>sig_genes[<span style="color:#e6db74">&#39;Gene_Symbol&#39;</span>]<span style="color:#f92672">.</span>tolist(),
+</span></span><span style="display:flex;"><span>    gene_sets<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;KEGG_2021_Human&#39;</span>],
+</span></span><span style="display:flex;"><span>    organism<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;human&#39;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Extract and manually plot the top 15 terms to retain exploratory hits</span>
+</span></span><span style="display:flex;"><span>kegg_df <span style="color:#f92672">=</span> ora_res<span style="color:#f92672">.</span>res2d<span style="color:#f92672">.</span>sort_values(<span style="color:#e6db74">&#39;Adjusted P-value&#39;</span>)<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">15</span>)
+</span></span><span style="display:flex;"><span>sns<span style="color:#f92672">.</span>scatterplot(data<span style="color:#f92672">=</span>kegg_df, x<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Combined Score&#39;</span>, y<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Term&#39;</span>, size<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Overlap&#39;</span>, hue<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Adjusted P-value&#39;</span>)
+</span></span></code></pre></div><h3 id="42-gene-set-enrichment-analysis-gsea">4.2 Gene Set Enrichment Analysis (GSEA)</h3>
+<p>Unlike ORA, GSEA does not rely on arbitrary fold-change thresholds. The entire mapped transcriptome was ranked using the stat parameter (Wald test statistic) from DESeq2. This allowed for the detection of subtle, coordinated shifts in massive gene networks.Python# Create a ranked list of all genes based on the DESeq2 Wald statistic</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ranked_df <span style="color:#f92672">=</span> df[[<span style="color:#e6db74">&#39;Gene_Symbol&#39;</span>, <span style="color:#e6db74">&#39;stat&#39;</span>]]<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;Gene_Symbol&#39;</span>)<span style="color:#f92672">.</span>mean()<span style="color:#f92672">.</span>sort_values(by<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;stat&#39;</span>, ascending<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Execute Preranked GSEA</span>
+</span></span><span style="display:flex;"><span>gsea_res <span style="color:#f92672">=</span> gp<span style="color:#f92672">.</span>prerank(
+</span></span><span style="display:flex;"><span>    rnk<span style="color:#f92672">=</span>ranked_df,
+</span></span><span style="display:flex;"><span>    gene_sets<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;KEGG_2021_Human.gmt&#34;</span>, 
+</span></span><span style="display:flex;"><span>    permutation_num<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>,
+</span></span><span style="display:flex;"><span>    seed<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><h3 id="5-multi-evidence-integration">5. Multi-Evidence Integration</h3>
+<p>To synthesize the findings and isolate the most robust biological signals, ORA and GSEA metrics were integrated into a single coordinate system. The Two-Evidence Plot maps the $-log_{10}(\text{Adjusted P-value})$ from ORA against the $-log_{10}(\text{FDR q-value})$ from GSEA.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Merge ORA and GSEA results on cleaned pathway names</span>
+</span></span><span style="display:flex;"><span>combined_df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>merge(ora_df, gsea_df, on<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Term_clean&#39;</span>, how<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;inner&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Calculate log-transformed significance safely</span>
+</span></span><span style="display:flex;"><span>combined_df[<span style="color:#e6db74">&#39;ORA_logP&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>np<span style="color:#f92672">.</span>log10(combined_df[<span style="color:#e6db74">&#39;Adjusted P-value&#39;</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1e-10</span>)
+</span></span><span style="display:flex;"><span>combined_df[<span style="color:#e6db74">&#39;GSEA_logFDR&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>np<span style="color:#f92672">.</span>log10(combined_df[<span style="color:#e6db74">&#39;FDR q-val&#39;</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1e-10</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Plot integration</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>scatter(
+</span></span><span style="display:flex;"><span>    combined_df[<span style="color:#e6db74">&#39;ORA_logP&#39;</span>], 
+</span></span><span style="display:flex;"><span>    combined_df[<span style="color:#e6db74">&#39;GSEA_logFDR&#39;</span>], 
+</span></span><span style="display:flex;"><span>    c<span style="color:#f92672">=</span>combined_df[<span style="color:#e6db74">&#39;NES&#39;</span>], 
+</span></span><span style="display:flex;"><span>    cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;coolwarm&#39;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add significance thresholds</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>axhline(<span style="color:#f92672">-</span>np<span style="color:#f92672">.</span>log10(<span style="color:#ae81ff">0.05</span>), color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;--&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>axvline(<span style="color:#f92672">-</span>np<span style="color:#f92672">.</span>log10(<span style="color:#ae81ff">0.05</span>), color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;--&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">&#34;Two_Evidence_Plot.png&#34;</span>)
+</span></span></code></pre></div>
+
+
+            </div>
+        
+<footer class="container border-top mt-5 mb-2">
+  <div class="row border-bottom">
+
+  <div class="d-flex justify-content-center small mt-2">
+    <small> Jiri Vlasak and Tobias Krynek</small>
+  </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.datatables.net/2.1.4/js/dataTables.js" integrity="sha384-bhTEuCvZn/7LkLAhDKIriigeZtnWpmv3f43HorHIijvhb76eN7sQBRC4PkIhe23S" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/2.1.4/js/dataTables.bootstrap5.js" integrity="sha384-ytWx70TEZNWKvhA4mV4nQPHLRzPJeBf42voNnsXOSCv7ZxlBWQIceO1G8bJirjxl" crossorigin="anonymous"></script>
+
+
+<script lang="js">
+  document.addEventListener("DOMContentLoaded", function() {
+    new DataTable('table')
+  })
+</script></body>
+</html>

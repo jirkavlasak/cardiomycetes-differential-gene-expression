@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <title>Final Analysis Report</title>
+    <meta name="description" content=''>
+    <meta http-equiv="content-language" content="en">
+
+    
+    <link rel="icon" href="/favicon.ico">
+
+    <meta property="og:url" content="http://localhost:1313/report/">
+  <meta property="og:site_name" content="AGE: Space Heart RNA-Seq">
+  <meta property="og:title" content="Final Analysis Report">
+  <meta property="og:description" content="Comprehensive Transcriptomic Analysis of Human Cardiomyocytes in Microgravity 1. Introduction This report presents a full bioinformatic pipeline analysis of RNA-Seq data from human iPSC-derived cardiomyocytes cultured on the International Space Station (ISS). The study compares cells exposed to long-term microgravity (uG) against ground-control 1G samples (1G) to identify molecular adaptations to the space environment.
+2. Exploratory Data Analysis &amp;amp; Biological QC 2.1 Methodology Raw sequencing counts were normalized using the Variance Stabilizing Transformation (VST) from the DESeq2 package.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary"><meta name="twitter:title" content="Final Analysis Report">
+<meta name="twitter:description" content="">
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/favicon.png" >
+    <link rel="canonical" href="http://localhost:1313/report/">
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
+
+    
+    
+    <link rel="stylesheet" href="http://localhost:1313/theme.min.0777c8c3811a056f56ce80c07bab6dcf20bb1074f285002d9fc90e0c70337b8c.css">
+
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.bootstrap5.min.css" integrity="sha384-3ptzuE+Rcpo/oIGgcQ40Oz3iGZ2GxGeQ/RZEyYncPivDl3lFBCI4eiS7PZAghYuS" crossorigin="anonymous">
+
+    
+    
+</head>
+<body>
+        <a class="visually-hidden-focusable" href="#content">Skip to main content</a>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white pb-0">
+    <div class="container">
+        
+        <div class="d-flex navbar-brand">
+           
+
+          <a class="navbar-brand" href="/">
+  
+    <img src="/images/logoVSCHT_zkr_zakl.jpg" alt="Logo VŠCHT" style="height: 40px;">
+  
+</a>
+        </div>
+
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapseBottom"
+                aria-controls="navbarCollapseBottom" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="d-flex flex-column align-items-end collapse navbar-collapse">
+
+            
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto navbar-top">
+                    
+                    
+                    
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light pt-0 pb-1">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="navbarCollapseBottom">
+
+            
+            <hr class="d-lg-none">
+
+            
+            <div class="d-lg-none">
+                
+                
+
+                
+                
+                <div class="main_menu_item pb-1">
+                    
+                    
+                    
+                    <a href="/report/">
+                        The Report
+                    </a>
+                    
+                </div>
+                
+                
+                <div class="main_menu_item pb-1">
+                    
+                    
+                    
+                    <a href="/data-preprocessing/">
+                        Data Preprocessing
+                    </a>
+                    
+                </div>
+                
+                
+                <div class="main_menu_item pb-1">
+                    
+                    
+                    
+                    <a href="/methodology/">
+                        Methodology &amp; Code
+                    </a>
+                    
+                </div>
+                
+                
+                <div class="main_menu_item pb-1">
+                    
+                    
+                    
+                    <a href="/gallery/">
+                        Extended Gallery
+                    </a>
+                    
+                </div>
+                
+                
+                <div class="main_menu_item pb-1">
+                    
+                    
+                    
+                    <a href="/ai-analysis/">
+                        AI analysis and study comparsion
+                    </a>
+                    
+                </div>
+                
+
+                
+            </div>
+            <hr class="d-lg-none">
+
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container mb-3 d-none d-lg-block">
+    <div class="row row-cols-auto">
+        
+        
+        
+        <div class="col-auto main_menu_item">
+             
+             
+            
+            <a href="/report/">The Report</a>
+            
+        </div>
+        
+        <div class="col-auto main_menu_item">
+             
+             
+            
+            <a href="/data-preprocessing/">Data Preprocessing</a>
+            
+        </div>
+        
+        <div class="col-auto main_menu_item">
+             
+             
+            
+            <a href="/methodology/">Methodology &amp; Code</a>
+            
+        </div>
+        
+        <div class="col-auto main_menu_item">
+             
+             
+            
+            <a href="/gallery/">Extended Gallery</a>
+            
+        </div>
+        
+        <div class="col-auto main_menu_item">
+             
+             
+            
+            <a href="/ai-analysis/">AI analysis and study comparsion</a>
+            
+        </div>
+        
+        
+    </div>
+</div>
+<div class="header"
+  style="background-image: linear-gradient(to bottom, rgba(55, 174, 148, 0.52), rgba(55, 174, 148, 0.73)), url('/images/banner.jpg');background-size: cover;background-position: center;">
+  <div class="container">
+    <h2 id="home-banner">
+      Final Analysis Report
+      </h2>
+  </div>
+</div>
+
+<nav class="breadcrumbs" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Cardiomyocytes in Microgravity</a></li>
+      <li class="breadcrumb-item"><a href="/report/">Final Analysis Report</a></li>
+    </ol>
+  </div>
+</nav>
+
+
+        
+        
+            <div class="container content" id="content">
+
+<h1 id="comprehensive-transcriptomic-analysis-of-human-cardiomyocytes-in-microgravity">Comprehensive Transcriptomic Analysis of Human Cardiomyocytes in Microgravity</h1>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>This report presents a full bioinformatic pipeline analysis of RNA-Seq data from human iPSC-derived cardiomyocytes cultured on the International Space Station (ISS). The study compares cells exposed to long-term microgravity (<strong>uG</strong>) against ground-control 1G samples (<strong>1G</strong>) to identify molecular adaptations to the space environment.</p>
+<hr>
+<h2 id="2-exploratory-data-analysis--biological-qc">2. Exploratory Data Analysis &amp; Biological QC</h2>
+<h3 id="21-methodology">2.1 Methodology</h3>
+<p>Raw sequencing counts were normalized using the <strong>Variance Stabilizing Transformation (VST)</strong> from the <code>DESeq2</code> package. To focus on the most informative signals, exploratory analysis was performed on the top 500 genes with the highest variance across all samples.</p>
+<h3 id="22-sample-similarity--clustering">2.2 Sample Similarity &amp; Clustering</h3>
+<p>To assess the quality of biological replicates and identify potential outliers, we employed hierarchical clustering and Principal Component Analysis (PCA).</p>
+<ul>
+<li><strong>Hierarchical Clustering:</strong> Sample Distance Heatmap: The heatmap shows two distinct dark blue blocks on the diagonal, representing high within-group correlation. Notably, the ISS uG samples (orange sidebar) show slightly more internal variation than the ground controls (blue sidebar), which is expected given the dynamic nature of spaceflight adaptation.</li>
+</ul>
+<p><img src="/images/Sample_Distance_Heatmap.png" alt="Sample Distance Heatmap"></p>
+<ul>
+<li><strong>PCA Analysis:</strong> PCA Analysis: The PCA plot (PC1 vs PC2) confirms that the primary source of variance (17.9% on PC1) is indeed the gravitational condition. Interestingly, PC3 (10.9%) helps to further resolve individual sample variations within the uG group, ensuring that no single outlier is driving the differential expression results.</li>
+</ul>
+<p><img src="/images/PCA_plot_exploratory_01.png" alt="PCA Plot"></p>
+<h3 id="23-batch-effect-assessment">2.3 Batch Effect Assessment</h3>
+<p>A critical step in our QC was the search for technical batch effects. Visual inspection of the PCA and clustering results confirmed that samples grouped strictly by biological condition rather than technical parameters (e.g., sequencing run or library prep date). <strong>As no significant batch effect was detected, no further correction (e.g., ComBat) was required for this dataset.</strong></p>
+<hr>
+<h2 id="3-differential-expression-analysis-dea">3. Differential Expression Analysis (DEA)</h2>
+<h3 id="31-statistical-modeling">3.1 Statistical Modeling</h3>
+<p>Differential expression was modeled using the negative binomial distribution provided by <code>DESeq2</code>. The experimental design was defined as <code>~ condition</code> (uG vs 1G).</p>
+<p><strong>Thresholds for Significance:</strong></p>
+<ul>
+<li><strong>FDR (Adjusted P-value):</strong> &lt; 0.05</li>
+<li><strong>Effect Size (|log2FoldChange|):</strong> &gt; 1.0</li>
+</ul>
+<h3 id="32-results-visualization">3.2 Results Visualization</h3>
+<p>The global transcriptional response is visualized via a Volcano Plot and a heatmap of the most significant Differentially Expressed Genes (DEGs).</p>
+<p>Volcano Plot: The plot reveals a massive transcriptomic shift. We identified thousands of significantly altered genes. The &ldquo;asymmetry&rdquo; towards up-regulation (red dots) suggests that microgravity triggers an active cellular response rather than just a passive degradation of transcripts.</p>
+<p><img src="/images/Volcano_plot_cardiomyocytes.png" alt="Volcano Plot"></p>
+<p>Top 50 DEGs Heatmap: The Z-score normalized heatmap shows a near-perfect binary switch between conditions. Genes like SUSD2 and NR4A1 are consistently high in 1G and low in uG, while others like SORL1 show the opposite pattern, providing a robust molecular signature of spaceflight.
+<img src="/images/Top50_DEGs_Heatmap.png" alt="Top DEGs Heatmap"></p>
+<h3 id="33-individual-gene-evidence">3.3 Individual Gene Evidence</h3>
+<p>To validate the consistency of the expression changes, we generated boxplots of normalized counts for the top 6 most significant genes, including <strong>CKM</strong> (Creatine Kinase) and <strong>H4C3</strong>.</p>
+<p>The boxplots validate the high statistical significance reported by DESeq2:</p>
+<p><strong>CKM (Creatine Kinase):</strong> Shows a dramatic and consistent increase in microgravity, suggesting an increased reliance on phosphocreatine for rapid energy mobilization.</p>
+<p><strong>DDX5:</strong> A sharp decrease in uG points towards altered RNA helicase activity and potential shifts in splicing or translation regulation in space.</p>
+<p><strong>HAND1:</strong> The significant reduction in this key cardiac transcription factor suggests that the structural identity of cardiomyocytes is under stress.</p>
+<p><img src="/images/Top6_DEGs_Boxplots.png" alt="Top Gene Boxplots"></p>
+<h3 id="34-detailed-degs-table">3.4 Detailed DEGs Table</h3>
+<h2 id="the-full-list-of-100-most-significant-genes-can-be-explored-in-the-interactive-tablereportstop100_degs_tablehtml"><a href="/reports/Top100_DEGs_Table.html">The full list of 100 most significant genes can be explored in the interactive table</a></h2>
+<h2 id="4-functional-enrichment-analysis">4. Functional Enrichment Analysis</h2>
+<h3 id="41-over-representation-analysis-ora">4.1 Over-Representation Analysis (ORA)</h3>
+<p>The refined ORA analysis of KEGG pathways (Figure X) identifies HIF-1 signaling and Vibrio cholerae infection (representing general stress and transport mechanisms) as the most statistically significant pathways (FDR &lt; 0.05, yellow-green dots).</p>
+<p>Key biological insights from the top 15 pathways:</p>
+<p>Cardiovascular Impact: The presence of multiple cardiomyopathy-related sets (Hypertrophic, Dilated, and Arrhythmogenic) confirms that microgravity induces gene expression patterns similar to terrestrial heart diseases.</p>
+<p>Metabolic Signaling: The AGE-RAGE signaling pathway and Adrenergic signaling in cardiomyocytes are highly ranked, indicating a significant shift in how heart cells handle glucose and respond to external stimuli like adrenaline in space.</p>
+<p>Cellular Adhesion: Focal adhesion remains a top hit, supporting the theory that loss of gravitational loading leads to the reorganization of the cellular &lsquo;skeleton&rsquo; and its attachment to the extracellular matrix.</p>
+<p><img src="/images/ORA_KEGG_Dotplot.png" alt="ORA KEGG Dotplot"></p>
+<h3 id="42-gene-set-enrichment-analysis-gsea-key-biological-pathways">4.2 Gene Set Enrichment Analysis (GSEA): Key Biological Pathways</h3>
+<p>While ORA focuses on genes crossing a strict significance threshold, GSEA evaluates the entire ranked transcriptome to detect coordinated shifts in biological processes. Although some pathways present an FDR q-value &gt; 0.05, in the context of GSEA and exploratory space biology, an FDR &lt; 0.25 is widely accepted as yielding biologically meaningful and highly relevant hypotheses.</p>
+<h4 id="summary-of-top-enriched-pathways-and-astronaut-health-impact">Summary of Top Enriched Pathways and Astronaut Health Impact</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Biological Pathway</th>
+<th style="text-align:center">Regulation</th>
+<th style="text-align:center">NES</th>
+<th style="text-align:center">FDR q-val</th>
+<th style="text-align:left">Biological Impact on Astronauts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Diabetic cardiomyopathy</strong></td>
+<td style="text-align:center">↑ Up</td>
+<td style="text-align:center">2.02</td>
+<td style="text-align:center">0.075</td>
+<td style="text-align:left">Heart metabolic dysregulation mirroring diabetic tissue; drives MTOR disruption and mitochondrial dysfunction.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Insulin resistance</strong></td>
+<td style="text-align:center">↑ Up</td>
+<td style="text-align:center">1.93</td>
+<td style="text-align:center">0.101</td>
+<td style="text-align:left">Glucose metabolism impaired; SOCS3 inhibits IRS signaling, leading to a cellular energy shutdown.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Ascorbate and aldarate metabolism</strong></td>
+<td style="text-align:center">↓ Down</td>
+<td style="text-align:center">-1.81</td>
+<td style="text-align:center">0.166</td>
+<td style="text-align:left"><strong>CRITICAL:</strong> Shutdown of antioxidant defenses. Accumulation of ROS leads to oxidative damage and accelerated cardiovascular aging.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Hypertrophic cardiomyopathy</strong></td>
+<td style="text-align:center">↓ Down</td>
+<td style="text-align:center">-1.76</td>
+<td style="text-align:center">0.126</td>
+<td style="text-align:left">Down-regulation of standard hypertrophic maintenance signals, actively driving <strong>cardiac atrophy</strong> in space.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Cardiac muscle contraction</strong></td>
+<td style="text-align:center">↑ Up</td>
+<td style="text-align:center">1.75</td>
+<td style="text-align:center">0.201</td>
+<td style="text-align:left">Remodeling of contractile proteins and potential sarcomere destabilization.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>HIF-1 signaling pathway</strong></td>
+<td style="text-align:center">↑ Up</td>
+<td style="text-align:center">1.72</td>
+<td style="text-align:center">0.197</td>
+<td style="text-align:left">Hypoxia-like signaling; the heart behaves as if oxygen-starved, entering a severe energy-depleted state.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Cell cycle</strong></td>
+<td style="text-align:center">↑ Up</td>
+<td style="text-align:center">1.71</td>
+<td style="text-align:center">0.184</td>
+<td style="text-align:left">Paradoxical increase in division signals without actual proliferation, likely driving cellular senescence and apoptosis.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Oxidative phosphorylation</strong></td>
+<td style="text-align:center">↓ Down</td>
+<td style="text-align:center">-1.67</td>
+<td style="text-align:center">0.152</td>
+<td style="text-align:left"><strong>Weakened mitochondrial respiration</strong>, leading to severe ATP deficits and failure of energy homeostasis.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Circadian entrainment</strong></td>
+<td style="text-align:center">↑ Up</td>
+<td style="text-align:center">1.64</td>
+<td style="text-align:center">0.161</td>
+<td style="text-align:left">Altered sensitivity to biorhythmic signals at the cardiac level, potentially contributing to severe sleep disruption in astronauts.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Adrenergic signaling in cardiomyocytes</strong></td>
+<td style="text-align:center">↑ Up</td>
+<td style="text-align:center">1.64</td>
+<td style="text-align:center">0.154</td>
+<td style="text-align:left"><strong>MASSIVE stress response:</strong> High adrenergic activity without physical load causes arrhythmogenic remodeling and weak contractility upon return to Earth gravity.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="deep-dive-adrenergic-signaling-in-cardiomyocytes">Deep Dive: Adrenergic Signaling in Cardiomyocytes</h4>
+<p>One of the most compelling findings from our GSEA is the <strong>massive up-regulation of the adrenergic signaling pathway</strong> (NES = 1.64). Adrenergic signaling is the fundamental mechanism regulating cardiac contractility and metabolism in response to physical and psychological stress.</p>
+<p>This up-regulated pathway involves a comprehensive network activation, including:</p>
+<ul>
+<li><strong>Receptors:</strong> ADRB1, ADRB2, ADRB3 (β-adrenergic receptors)</li>
+<li><strong>Effectors &amp; Mediators:</strong> ADCY (adenylyl cyclase), GNAS (stimulatory G protein), cAMP, and PKA activation</li>
+<li><strong>Target Proteins:</strong> SCN5A (sodium channel), RYR2 (ryanodine receptor), and crucial contractile elements like TNNI3, MYL2, and MYL3.</li>
+</ul>
+<p><strong>Biological Interpretation:</strong>
+We interpret this intense up-regulation as an <strong>acute cellular stress response</strong>. The cardiomyocytes perceive microgravity as a pathophysiological stressor, reacting by aggressively increasing adrenergic signaling in a desperate attempt to maintain cardiovascular homeostasis.</p>
+<p>This highlights a critical evolutionary mismatch: under normal terrestrial conditions, this adrenergic drive would stimulate cardiac contractility to match an increased mechanical load. However, in microgravity, this powerful signal fires continuously while the physical mechanical load is entirely absent. This profound <strong>decoupling of biochemical signaling and mechanical reality</strong> likely drives the maladaptive remodeling, arrhythmias, and severe bradycardia astronauts face when re-adapting to Earth&rsquo;s gravity.</p>
+<p><img src="/images/GSEA_Diabetic.png" alt="GSEA Enrichment Plot - Diabetic Cardiomyopathy"></p>
+<hr>
+<h2 id="5-pathway-topology--integration">5. Pathway Topology &amp; Integration</h2>
+<h3 id="51-spia-and-two-evidence-plot">5.1 SPIA and Two-Evidence Plot</h3>
+<p>To ensure the robustness of our biological conclusions, we integrated ORA (count-based) and GSEA (rank-based) results into a Two-Evidence Plot. This visualization cross-validates the significance of the pathways across different statistical methodologies.</p>
+<p>Interpretation of the plot:</p>
+<p>Significance Trends: Several pathways show strong GSEA significance (high on the Y-axis), particularly those with a positive Normalized Enrichment Score (NES) (red dots), indicating their overall activation in microgravity.</p>
+<p>Robust Hits: While many pathways cluster in the exploratory region, the shift of several red-colored dots towards the right (higher ORA significance) confirms a consistent biological signal. This combined evidence strengthens our finding that microgravity induces a coordinated metabolic and stress-response program, rather than isolated gene changes.</p>
+<p>Consensus: The most reliable pathways are those positioned furthest from the origin, representing biological processes that are both enriched with differentially expressed genes and show a significant ranked-list shift.</p>
+<p><img src="/images/Two_Evidence_Plot.png" alt="Two-Evidence Plot"></p>
+<hr>
+<h2 id="6-biological-conclusions">6. Biological Conclusions</h2>
+<p>This comprehensive transcriptomic profiling establishes a distinct and robust <strong>&ldquo;Spaceflight Phenotype&rdquo;</strong> in human cardiomyocytes exposed to long-term microgravity. The integration of single-gene differential expression, threshold-based over-representation (ORA), and rank-based enrichment (GSEA) converges on three major biological adaptations:</p>
+<h3 id="1-metabolic-reprogramming-and-diabetic-like-shift">1. Metabolic Reprogramming and &ldquo;Diabetic-like&rdquo; Shift</h3>
+<p>The most striking finding is the profound metabolic shift induced by the space environment. The highly significant enrichment of the <strong>Diabetic Cardiomyopathy</strong> and <strong>AGE-RAGE signaling pathways</strong>, alongside the strong up-regulation of <strong>CKM (Creatine Kinase M-type)</strong>, indicates that cardiomyocytes fundamentally alter their energy handling in zero gravity. In the absence of terrestrial gravitational loading, the heart muscle shifts towards alternative energy mobilization pathways that molecularly mimic insulin resistance and diabetic cardiac tissue on Earth.</p>
+<h3 id="2-induction-of-pseudohypoxia-hif-1-activation">2. Induction of Pseudohypoxia (HIF-1 Activation)</h3>
+<p>Despite being cultured in a normoxic environment on the ISS, the cells exhibit a massive activation of the <strong>HIF-1 signaling pathway</strong> (NES 1.723). This &ldquo;pseudohypoxia&rdquo; suggests that the physical unloading—or altered fluid dynamics within the culture vessel in microgravity—triggers an acute cellular stress response. The cells react as if they are oxygen-deprived, systematically adjusting their transcriptome in an attempt to survive perceived environmental hostility.</p>
+<h3 id="3-structural-remodeling-and-loss-of-cardiac-identity">3. Structural Remodeling and Loss of Cardiac Identity</h3>
+<p>The data strongly supports the occurrence of microgravity-induced cardiac remodeling. The significant down-regulation of <strong>HAND1</strong>, a critical transcription factor for maintaining mature cardiac identity, coupled with alterations in the <strong>Focal Adhesion</strong> pathway, shows that the lack of mechanical resistance causes the cellular cytoskeleton to reorganize. Furthermore, the prominence of disease-associated gene sets (<strong>Hypertrophic, Dilated, and Arrhythmogenic Cardiomyopathies</strong>) indicates that this structural adaptation shares transcriptional hallmarks with pathological heart conditions.</p>
+<h3 id="summary">Summary</h3>
+<p>Ultimately, these results suggest that the human heart does not simply &ldquo;relax&rdquo; in space; rather, it actively initiates a massive compensatory stress response. The lack of mechanical load paradoxically drives the cardiomyocytes into a state of metabolic crisis, pseudohypoxia, and structural remodeling. Understanding these core molecular mechanisms provides critical therapeutic targets for protecting astronauts&rsquo; cardiovascular health during long-duration space exploration missions.</p>
+
+
+
+            </div>
+        
+<footer class="container border-top mt-5 mb-2">
+  <div class="row border-bottom">
+
+  <div class="d-flex justify-content-center small mt-2">
+    <small> Jiri Vlasak and Tobias Krynek</small>
+  </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.datatables.net/2.1.4/js/dataTables.js" integrity="sha384-bhTEuCvZn/7LkLAhDKIriigeZtnWpmv3f43HorHIijvhb76eN7sQBRC4PkIhe23S" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/2.1.4/js/dataTables.bootstrap5.js" integrity="sha384-ytWx70TEZNWKvhA4mV4nQPHLRzPJeBf42voNnsXOSCv7ZxlBWQIceO1G8bJirjxl" crossorigin="anonymous"></script>
+
+
+<script lang="js">
+  document.addEventListener("DOMContentLoaded", function() {
+    new DataTable('table')
+  })
+</script></body>
+</html>

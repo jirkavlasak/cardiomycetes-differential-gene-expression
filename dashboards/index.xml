@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Dashboards on Pathogens Portal</title>
+    <link>http://localhost:1313/dashboards/</link>
+    <description>Recent content in Data Dashboards on Pathogens Portal</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="http://localhost:1313/dashboards/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Example dashboard</title>
+      <link>http://localhost:1313/dashboards/example-dashboard/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/dashboards/example-dashboard/</guid>
+      <description>&lt;h2 id=&#34;vítejte-na-dashboardu&#34;&gt;Vítejte na dashboardu&lt;/h2&gt;&#xA;&lt;p&gt;Zde bude zobrazen interaktivní obsah a grafy. V tomto příkladu máme:&lt;/p&gt;&#xA;&lt;h3 id=&#34;covid-19-data-přehled&#34;&gt;COVID-19 Data Přehled&lt;/h3&gt;&#xA;&lt;p&gt;Tento dashboard obsahuje analýzu dat týkajících se pandemie COVID-19. Nabízíme přehled:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Počty potvrzených případů&lt;/strong&gt; - Aktuální statistiky&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Geografické rozložení&lt;/strong&gt; - Mapa zasažených oblastí&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Trendy v čase&lt;/strong&gt; - Grafy vývoje situace&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Demografické údaje&lt;/strong&gt; - Rozdělení podle věku a pohlaví&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;interaktivní-prvky&#34;&gt;Interaktivní prvky&lt;/h3&gt;&#xA;&lt;p&gt;Dashboard se vyvíjí a bude postupně doplňován o:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Grafy a vizualizace&lt;/li&gt;&#xA;&lt;li&gt;Filtry pro datum a region&lt;/li&gt;&#xA;&lt;li&gt;Exportní možnosti&lt;/li&gt;&#xA;&lt;li&gt;Podrobné statistiky&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Více informací najdete na stránce &lt;a href=&#34;http://localhost:1313/contribute/&#34;&gt;Přispívání&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

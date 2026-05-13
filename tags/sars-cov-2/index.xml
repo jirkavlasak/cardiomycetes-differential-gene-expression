@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sars-Cov-2 on Pathogens Portal</title>
+    <link>http://localhost:1313/tags/sars-cov-2/</link>
+    <description>Recent content in Sars-Cov-2 on Pathogens Portal</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 01 Jan 2024 08:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/sars-cov-2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Example news</title>
+      <link>http://localhost:1313/news/example/</link>
+      <pubDate>Mon, 01 Jan 2024 08:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/news/example/</guid>
+      <description>&lt;h1 id=&#34;example-news&#34;&gt;Example news&lt;/h1&gt;&#xA;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus odio massa. Vestibulum tincidunt, leo sed pulvinar ultrices, nisi nisl rhoncus nisl, et bibendum augue ipsum id nisi. Praesent scelerisque, elit in scelerisque cursus, augue quam finibus elit, nec consectetur erat eros non eros. Mauris cursus dolor lacus, id tempus mi consequat id. Etiam vehicula eros imperdiet enim rutrum, ut semper nibh tincidunt. Nulla ac pretium nunc. Morbi dapibus vitae elit vitae tempor. Aenean pellentesque pharetra dolor, et sagittis ligula fringilla nec. Sed eu imperdiet ligula. Aenean est turpis, molestie sagittis tempus id, semper vel elit. Curabitur hendrerit euismod vehicula. Donec ultricies scelerisque pulvinar. Integer sed dui enim. Mauris purus tortor, facilisis sed leo ut, egestas blandit lacus. Sed non congue dolor. Fusce non nunc vestibulum, maximus elit vitae, mattis lorem.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
