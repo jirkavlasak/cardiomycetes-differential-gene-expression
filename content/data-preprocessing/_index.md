@@ -9,7 +9,7 @@ weight: 2
 Before executing the computational pipeline, it is crucial to understand the origin and experimental design of the dataset. The data utilized in this project was retrieved from the NCBI Sequence Read Archive (SRA) under BioProject **PRJNA947970**. 
 
 ###  Dataset Overview
-The dataset comprises 12 high-depth transcriptomic samples of human cardiomyocytes (derived from the IMR90 cell line). The sequencing was performed using the **Illumina NovaSeq 6000** platform, producing Single-End RNA-Seq reads.
+The dataset comprises 12 high-depth transcriptomic samples of human induced pluripotent stem cell-derived cardiomyocytes (hiPSC-CMs), cultured as cardiac spheroids. The sequencing was performed using the **Illumina NovaSeq 6000** platform, producing Single-End RNA-Seq reads.
 
 The core objective of the experiment is to investigate the effects of spaceflight and microgravity on cardiac muscle cells. The 12 samples are evenly divided into two distinct experimental conditions:
 

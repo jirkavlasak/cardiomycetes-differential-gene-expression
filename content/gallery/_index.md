@@ -54,6 +54,18 @@ The up-regulation of **MAP Kinase Phosphatase Activity (NES = 1.74)** — driven
 
 ---
 
+---
+
+### Disease Ontology ORA
+{{< figure src="/images/DO_ORA_Dotplot.png" alt="Disease Ontology ORA" class="img-medium" >}}
+
+**Enrichment Status:** ORA against Disease Ontology 2023 database
+
+**In-Depth Biological Interpretation:**
+The Disease Ontology ORA provides the most clinically direct interpretation of our findings. Unlike KEGG (which maps biochemical pathways) or GO (which describes molecular functions), the Disease Ontology directly links gene sets to named, classified human diseases. The enrichment of cardiomyopathy-related disease terms confirms that the microgravity transcriptome does not merely *resemble* a diseased state — it is, by formal ontological definition, expressing the gene signatures of established cardiac pathologies. This is the strongest possible translational argument: the same genes that distinguish diseased hearts from healthy ones are differentially expressed in cardiomyocytes after spaceflight. This finding has direct implications for astronaut health monitoring, suggesting that standard cardiac disease biomarkers could serve as early warning indicators of microgravity-induced cardiovascular deconditioning.
+
+---
+
 # Supplementary Pathway Data
 
 ### Complete GSEA Report
