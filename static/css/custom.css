@@ -1,0 +1,92 @@
+/* ============================================================
+   Image layout: center all content images, limit default width
+   ============================================================ */
+
+.content img {
+  display: block;
+  margin: 1.5rem auto;
+  max-width: 80%;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Figure shortcode wrapper */
+.content figure {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.content figure img {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+}
+
+.content figure figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* ============================================================
+   Named width helpers — used via {{< figure class="..." >}}
+   ============================================================ */
+
+/* Narrow: square heatmaps, volcano, single-pathway plots */
+.img-narrow img  { max-width: 58%; }
+
+/* Medium: dotplots, barplots (default) */
+.img-medium img  { max-width: 72%; }
+
+/* Wide: multi-panel PCA, boxplot grids */
+.img-wide img    { max-width: 90%; }
+
+/* Side by side: two images next to each other */
+.img-half {
+  display: inline-block;
+  width: 48%;
+  vertical-align: top;
+  text-align: center;
+  margin: 1rem 0.5%;
+}
+
+.img-half img {
+  max-width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  margin: 0.5rem auto;
+}
+
+/* ============================================================
+   Side-by-side pair shortcut — wrap two figures in a flex row
+   ============================================================ */
+.img-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.img-row figure {
+  flex: 1 1 45%;
+  min-width: 280px;
+  margin: 0;
+}
+
+.img-row figure img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile: full width */
+@media (max-width: 767px) {
+  .content img    { max-width: 100%; }
+  .img-narrow img { max-width: 100%; }
+  .img-medium img { max-width: 100%; }
+  .img-wide img   { max-width: 100%; }
+  .img-half       { width: 100%; margin: 0.5rem 0; }
+  .img-row figure { flex: 1 1 100%; }
+}

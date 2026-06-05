@@ -1,0 +1,42 @@
+baseURL = "https://jirkavlasak.github.io/cardiomycetes-differential-gene-expression/"
+title = "AGE: Space Heart RNA-Seq"
+theme = "hugo-pathogens-portal"
+relativeURLs = false
+canonifyURLs = true
+
+# Specify the default content language.
+defaultContentLanguage = "en"
+
+[params]
+# (Optional) Set source repository location.
+# repository = "https://github.com/jirka-vlasak/space-heart-rnaseq"
+
+# (Optional) Set the logo for your project. Place the file in static/images/
+logo = "images/logoVSCHT_zkr_zakl.jpg"
+
+# ---- OUR CUSTOM TOP NAVIGATION MENU ----
+
+[[menu.main]]
+  name = "The Report"
+  url = "/report/"
+  weight = 1
+
+[[menu.main]]
+  name = "Extended Gallery"
+  url = "/gallery/"
+  weight = 4
+
+[[menu.main]]
+  name = "Methodology & Code"
+  url = "/methodology/"
+  weight = 3
+
+[[menu.main]]
+name = "Data Preprocessing"
+url = "/data-preprocessing/"
+weight = 2
+
+[[menu.main]]
+name = "AI analysis and study comparsion"
+url = "/ai-analysis/"
+weight = 5
