@@ -1,8 +1,6 @@
 baseURL = "https://jirkavlasak.github.io/cardiomycetes-differential-gene-expression/"
 title = "AGE: Space Heart RNA-Seq"
 theme = "hugo-pathogens-portal"
-relativeURLs = true
-
 # Specify the default content language.
 defaultContentLanguage = "en"
 
@@ -22,25 +20,25 @@ logo = "images/logoVSCHT_zkr_zakl.jpg"
 
 [[menu.main]]
   name = "The Report"
-  url = "/report/"
+  url = "/cardiomycetes-differential-gene-expression/report/"
   weight = 1
 
 [[menu.main]]
   name = "Extended Gallery"
-  url = "/gallery/"
+  url = "/cardiomycetes-differential-gene-expression/gallery/"
   weight = 4
 
 [[menu.main]]
   name = "Methodology & Code"
-  url = "/methodology/"
+  url = "/cardiomycetes-differential-gene-expression/methodology/"
   weight = 3
 
 [[menu.main]]
 name = "Data Preprocessing"
-url = "/data-preprocessing/"
+url = "/cardiomycetes-differential-gene-expression/data-preprocessing/"
 weight = 2
 
 [[menu.main]]
 name = "AI analysis and study comparsion"
-url = "/ai-analysis/"
+url = "/cardiomycetes-differential-gene-expression/ai-analysis/"
 weight = 5
