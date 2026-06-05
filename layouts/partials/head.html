@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.bootstrap5.min.css" integrity="sha384-3ptzuE+Rcpo/oIGgcQ40Oz3iGZ2GxGeQ/RZEyYncPivDl3lFBCI4eiS7PZAghYuS" crossorigin="anonymous">
 
     <!-- Project custom styles (image sizing, layout tweaks) -->
-    <link rel="stylesheet" href="{{ "/css/custom.css" | relURL }}">
+    <link rel="stylesheet" href="{{ "css/custom.css" | absURL }}">
 
     <!-- Redirect if redirect_url is set -->
     {{ if .Params.redirect_url }}
