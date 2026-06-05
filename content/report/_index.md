@@ -121,7 +121,7 @@ The boxplots validate the high statistical significance reported by DESeq2:
 
 ### 3.4 Detailed DEGs Table
 
-[The full list of 100 most significant genes can be explored in the interactive table](/reports/Top100_DEGs_Table.html)
+[The full list of 100 most significant genes can be explored in the interactive table](/cardiomycetes-differential-gene-expression/reports/Top100_DEGs_Table.html)
 ---
 
 ## 4. Functional Enrichment Analysis

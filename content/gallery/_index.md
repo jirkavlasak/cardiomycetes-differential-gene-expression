@@ -71,14 +71,14 @@ The Disease Ontology ORA provides the most clinically direct interpretation of o
 ### Complete GSEA Report
 The pathways detailed above represent only the most biologically impactful shifts. For the complete, unfiltered list of all evaluated KEGG pathways, including exact p-values, FDR metrics, and Enrichment Scores, please refer to the raw data output:
 
-[📄 Download Full Preranked GSEA Report (CSV)](/reports/gseapy.gene_set.prerank.report.csv)
+[📄 Download Full Preranked GSEA Report (CSV)](/cardiomycetes-differential-gene-expression/reports/gseapy.gene_set.prerank.report.csv)
 
 
 
 ### Complete Differential Expression Data
 While the heatmaps, boxplots, and interactive tables highlight the most critical expression changes, the underlying dataset provides a comprehensive look at the transcriptomic shift. For the complete list of the top 100 differentially expressed genes, including exact log2FoldChange values, base means, and adjusted p-values, please refer to the raw data output:
 
-[📄 Download Top 100 DEGs Report (CSV)](/reports/Top100_Annotated_Genes_uG_vs_1G.csv)
+[📄 Download Top 100 DEGs Report (CSV)](/cardiomycetes-differential-gene-expression/reports/Top100_Annotated_Genes_uG_vs_1G.csv)
 
 
 ### Global Transcriptomic Shift (Top 500 DEGs)

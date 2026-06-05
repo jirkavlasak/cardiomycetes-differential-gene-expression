@@ -113,10 +113,10 @@ multiqc . -f -o final_multiqc_report/
 **Explore the interactive MultiQC report below:**
 
 <iframe 
-    src="/reports/multiqc_report.html" 
+    src="/cardiomycetes-differential-gene-expression/reports/multiqc_report.html" 
     width="100%" 
     height="800px" 
     style="border:1px solid #ddd; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px;">
 </iframe>
 
-[Open Full-Screen Report](/reports/multiqc_report.html)
+[Open Full-Screen Report](/cardiomycetes-differential-gene-expression/reports/multiqc_report.html)
