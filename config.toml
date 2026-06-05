@@ -1,8 +1,7 @@
 baseURL = "https://jirkavlasak.github.io/cardiomycetes-differential-gene-expression/"
 title = "AGE: Space Heart RNA-Seq"
 theme = "hugo-pathogens-portal"
-relativeURLs = false
-canonifyURLs = true
+relativeURLs = true
 
 # Specify the default content language.
 defaultContentLanguage = "en"
