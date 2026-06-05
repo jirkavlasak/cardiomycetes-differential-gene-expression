@@ -121,7 +121,23 @@ The boxplots validate the high statistical significance reported by DESeq2:
 
 ### 3.4 Detailed DEGs Table
 
-[The full list of 100 most significant genes can be explored in the interactive table](/cardiomycetes-differential-gene-expression/reports/Top100_DEGs_Table.html)
+While the heatmap and boxplots highlight the most visually striking expression changes, the full statistical picture is captured in the ranked table of the top 100 differentially expressed genes. Each entry reports the **log₂ fold change**, **base mean expression**, **Wald test statistic**, and **FDR-adjusted p-value** as output directly by PyDESeq2.
+
+To facilitate rapid biological follow-up, every gene in the table is annotated with a set of **signpost links** — direct one-click shortcuts to the three most useful external databases:
+
+- **GC** (GeneCards) — curated gene summaries, disease associations, expression atlases
+- **UP** (UniProt) — reviewed protein function, structure, and pathway membership
+- **NCBI** (NCBI Gene) — official nomenclature, genomic context, and literature links
+
+The table is fully interactive: use the **search box** to filter by gene symbol or name, and click any **column header** to re-sort. This makes it straightforward to, for example, isolate all significantly down-regulated genes (log₂FC < −1) or find a specific gene of interest within the ranked list.
+
+<div class="my-3">
+  <a href="/cardiomycetes-differential-gene-expression/reports/Top100_DEGs_Table.html"
+     target="_blank"
+     class="btn btn-primary btn-lg">
+    🔬 Open Interactive DEGs Signpost Table
+  </a>
+</div>
 
 ---
 
