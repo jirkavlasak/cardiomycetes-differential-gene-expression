@@ -7,7 +7,7 @@
         <div class="d-flex navbar-brand">
            
 
-          <a class="navbar-brand" href="{{ "" | absURL }}">
+          <a class="navbar-brand" href="{{ .Site.BaseURL }}">
   {{ if .Site.Params.logo }}
     <img src="{{ .Site.Params.logo | relURL }}" alt="Logo VŠCHT" style="height: 40px;">
   {{ else }}
