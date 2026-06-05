@@ -81,7 +81,22 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Mobile: full width */
+/* ============================================================
+   At-a-Glance stat cards
+   ============================================================ */
+
+.stat-card {
+  border-radius: 10px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* ============================================================
+   Mobile: full width */
 @media (max-width: 767px) {
   .content img    { max-width: 100%; }
   .img-narrow img { max-width: 100%; }

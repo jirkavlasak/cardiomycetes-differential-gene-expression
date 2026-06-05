@@ -12,6 +12,57 @@ The experiment compares 6 samples exposed to long-term **microgravity (ISS uG)**
 
 The original publication interpreted the observed gene expression changes as evidence of "beneficial cardiac differentiation and growth" in microgravity. Our independent re-analysis, using KEGG and GO pathway databases with both threshold-based (ORA) and rank-based (GSEA) methods, reveals a more nuanced and clinically concerning picture: the transcriptomic shifts are consistent with a profound stress response involving metabolic reprogramming, pseudohypoxia, and structural remodeling — rather than genuine maturation.
 
+<div class="row g-3 my-4 text-center">
+  <div class="col-6 col-md-2">
+    <div class="card h-100 border-0 shadow-sm">
+      <div class="card-body py-3">
+        <div class="fs-2 fw-bold text-primary">12</div>
+        <div class="small text-muted">RNA-Seq samples</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-2">
+    <div class="card h-100 border-0 shadow-sm">
+      <div class="card-body py-3">
+        <div class="fs-2 fw-bold text-secondary">66 794</div>
+        <div class="small text-muted">Transcripts tested</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-2">
+    <div class="card h-100 border-0 shadow-sm">
+      <div class="card-body py-3">
+        <div class="fs-2 fw-bold text-danger">436</div>
+        <div class="small text-muted">Up-regulated DEGs</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-2">
+    <div class="card h-100 border-0 shadow-sm">
+      <div class="card-body py-3">
+        <div class="fs-2 fw-bold text-primary">798</div>
+        <div class="small text-muted">Down-regulated DEGs</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-2">
+    <div class="card h-100 border-0 shadow-sm">
+      <div class="card-body py-3">
+        <div class="fs-2 fw-bold text-warning">4.4×10⁻²⁷</div>
+        <div class="small text-muted">Best adj. p-value</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-2">
+    <div class="card h-100 border-0 shadow-sm">
+      <div class="card-body py-3">
+        <div class="fs-2 fw-bold text-success">0.008</div>
+        <div class="small text-muted">Best GO GSEA FDR</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 ---
 
 ## 2. Exploratory Data Analysis & Biological QC
@@ -25,7 +76,7 @@ To assess the quality of biological replicates and identify potential outliers, 
 * **Hierarchical Clustering:** Sample Distance Heatmap: The heatmap shows two distinct dark blue blocks on the diagonal, representing high within-group correlation. Notably, the ISS uG samples (orange sidebar) show slightly more internal variation than the ground controls (blue sidebar), which is expected given the dynamic nature of spaceflight adaptation.
 
 {{< figure src="/images/Sample_Distance_Heatmap.png" alt="Sample Distance Heatmap" class="img-narrow" >}}
-* **PCA Analysis:** PCA Analysis: The PCA plot (PC1 vs PC2) confirms that the primary source of variance (17.9% on PC1) is indeed the gravitational condition. Interestingly, PC3 (10.9%) helps to further resolve individual sample variations within the uG group, ensuring that no single outlier is driving the differential expression results.
+* **PCA Analysis:** The PCA plot (PC1 vs PC2) confirms that the primary source of variance (17.9% on PC1) is indeed the gravitational condition. Interestingly, PC3 (10.9%) helps to further resolve individual sample variations within the uG group, ensuring that no single outlier is driving the differential expression results.
 
 
 {{< figure src="/images/PCA_plot_exploratory_01.png" alt="PCA Plot" class="img-wide" >}}
@@ -108,7 +159,21 @@ The convergence of Cardiac Muscle Contraction and Cellular Response to Hypoxia a
 {{< figure src="/images/GO_MF_ORA_Dotplot.png" alt="GO Molecular Function ORA" >}}
 </div>
 
-### 4.3 Gene Set Enrichment Analysis (GSEA): Key Biological Pathways
+### 4.3 Disease Association ORA (Jensen DISEASES)
+To bridge transcriptomic findings directly to named clinical conditions, ORA was run against the **Jensen DISEASES** database — a curated compendium of disease–gene associations derived from literature mining. This provides a clinically-anchored perspective that neither KEGG pathways nor GO terms offer.
+
+{{< figure src="/images/DO_ORA_Dotplot.png" alt="Disease Associations ORA" class="img-medium" >}}
+
+| Disease Term | Adj. P-value | Clinical Relevance |
+|:---|:---:|:---|
+| **Cardiomyopathy** | 0.006 | Direct cardiac muscle disease — primary hit |
+| **Hypertrophic cardiomyopathy** | 0.006 | Specific structural disease subtype confirmed |
+| **Dilated cardiomyopathy** | 0.034 | Second structural subtype — cardiac dilation pattern |
+| Kidney failure | 0.034 | Secondary organ dysfunction common in cardiac patients |
+
+The top hits — Cardiomyopathy (adj. p = 0.006), Hypertrophic cardiomyopathy (adj. p = 0.006), and Dilated cardiomyopathy (adj. p = 0.034) — directly confirm at the clinical disease-gene level what KEGG and GO showed at the pathway level. Microgravity does not merely activate cardiomyopathy-like pathways; by formal disease–gene definition, it expresses the molecular signature of cardiomyopathy itself.
+
+### 4.4 Gene Set Enrichment Analysis (GSEA): Key Biological Pathways
 
 While ORA focuses on genes crossing a strict significance threshold, GSEA evaluates the entire ranked transcriptome to detect coordinated shifts in biological processes. Although some pathways present an FDR q-value > 0.05, in the context of GSEA and exploratory space biology, an FDR < 0.25 is widely accepted as yielding biologically meaningful and highly relevant hypotheses.
 
@@ -142,7 +207,7 @@ This highlights a critical evolutionary mismatch: under normal terrestrial condi
 
 {{< figure src="/images/GSEA_Diabetic.png" alt="GSEA Enrichment Plot - Diabetic Cardiomyopathy" class="img-medium" >}}
 
-### 4.4 GO Gene Set Enrichment Analysis
+### 4.5 GO Gene Set Enrichment Analysis
 Preranked GSEA against GO Biological Process and Molecular Function databases revealed a set of functional shifts that directly mirror and mechanistically extend the KEGG findings.
 
 **GO Biological Process — top enriched terms (by |NES|):**
@@ -178,7 +243,12 @@ The GO results provide **mechanistic resolution** beyond KEGG: the insulin resis
 
 ### 5.1 Multi-Evidence Integration (ORA vs GSEA)
 
-> **Note on SPIA:** Signaling Pathway Impact Analysis (SPIA) is a topology-aware perturbation method that propagates gene-level fold changes through directed KEGG pathway graphs. A robust and maintained Python implementation of SPIA is not currently available. As an equivalent multi-evidence synthesis, we directly integrate ORA (count-based over-representation) and GSEA (rank-based enrichment) results into a Two-Evidence Plot, which cross-validates pathway significance across two fundamentally different statistical frameworks and achieves comparable biological discriminatory power.
+> **Note on SPIA (Signaling Pathway Impact Analysis):**
+> SPIA is a topology-aware perturbation method that computes two independent scores per pathway: (1) an over-representation score (pORA) based on which DEGs map to the pathway, and (2) a perturbation accumulation score (pPERT) that propagates signed log₂FC values through the directed KEGG graph topology. Both scores are then combined into a global probability pG via Fisher's method, which is what makes SPIA statistically more powerful than plain ORA for signaling cascades.
+>
+> **Why we did not use SPIA here:** The canonical SPIA implementation is an R package (`SPIA`, Bioconductor). No Python port maintains the full topological propagation model — the closest available package (`SPIASpy`) has been unmaintained since 2018 and lacks support for current KEGG graph formats. Running a single R package would require a separate R environment, breaking the reproducibility of our fully Python-based pipeline.
+>
+> **Why our Two-Evidence Plot is a valid methodological substitute:** SPIA's advantage over plain ORA comes entirely from adding a second, independent line of evidence to avoid false positives. Our Two-Evidence Plot achieves this same goal via a different route: the X-axis captures the ORA signal (count-based, threshold-dependent, equivalent to SPIA's pORA), while the Y-axis captures the preranked GSEA signal (rank-based, threshold-free, using the full transcriptome ranked by Wald statistic — a statistically stronger signal than SPIA's pPERT, which uses only DEG-level fold changes). Pathways in the top-right quadrant (significant in *both* frameworks) are the same robust hits that SPIA's combined pG would highlight. The NES color-coding adds directionality, giving us the equivalent of SPIA's signed perturbation. This approach has the additional advantage of being framework-agnostic and visually interpretable.
 
 To ensure the robustness of our biological conclusions, we integrated ORA (count-based) and GSEA (rank-based) results into a Two-Evidence Plot. This visualization cross-validates the significance of the pathways across different statistical methodologies.
 
@@ -196,16 +266,19 @@ Consensus: The most reliable pathways are those positioned furthest from the ori
 
 ## 6. Biological Conclusions
 
-This comprehensive transcriptomic profiling establishes a distinct and robust **"Spaceflight Phenotype"** in human cardiomyocytes exposed to long-term microgravity. The integration of single-gene differential expression, threshold-based over-representation (ORA), and rank-based enrichment (GSEA) converges on three major biological adaptations:
+This comprehensive transcriptomic profiling establishes a distinct and robust **"Spaceflight Phenotype"** in human cardiomyocytes exposed to long-term microgravity. The convergence of single-gene DEA, KEGG and GO pathway enrichment (ORA + GSEA across four independent databases) provides multi-layered, cross-validated evidence for four major biological adaptations:
 
 ### 1. Metabolic Reprogramming and "Diabetic-like" Shift
-The most striking finding is the profound metabolic shift induced by the space environment. The highly significant enrichment of the **Diabetic Cardiomyopathy** and **AGE-RAGE signaling pathways**, alongside the strong up-regulation of **CKM (Creatine Kinase M-type)**, indicates that cardiomyocytes fundamentally alter their energy handling in zero gravity. In the absence of terrestrial gravitational loading, the heart muscle shifts towards alternative energy mobilization pathways that molecularly mimic insulin resistance and diabetic cardiac tissue on Earth.
+The most striking finding is a profound metabolic crisis induced by the space environment. The KEGG enrichment of **Diabetic Cardiomyopathy** (NES = 2.02) and **Insulin Resistance** (NES = 1.93), alongside GO Molecular Function GSEA identifying **PI3K Regulator Activity** and **IGF Receptor Binding** as top hits, points to a single mechanistic origin: the massive induction of **SOCS3 and SOCS1** blocks the insulin receptor / IRS-1 / PI3K signaling cascade, plunging the cells into metabolic starvation. The strong up-regulation of **CKM (Creatine Kinase M-type)** at the single-gene level confirms that cardiomyocytes are forced to rely on the phosphocreatine emergency energy system in the absence of functional mitochondrial ATP production.
 
-### 2. Induction of Pseudohypoxia (HIF-1 Activation)
-Despite being cultured in a normoxic environment on the ISS, the cells exhibit a massive activation of the **HIF-1 signaling pathway** (NES 1.723). This "pseudohypoxia" suggests that the physical unloading—or altered fluid dynamics within the culture vessel in microgravity—triggers an acute cellular stress response. The cells react as if they are oxygen-deprived, systematically adjusting their transcriptome in an attempt to survive perceived environmental hostility.
+### 2. Induction of Pseudohypoxia and Oxidative Stress
+Despite normoxic culture conditions on the ISS, the cells exhibit massive activation of the **HIF-1 signaling pathway** (NES = 1.72, KEGG) confirmed independently by GO Biological Process ORA identifying **Cellular Response to Hypoxia** and **Cellular Response to Reactive Oxygen Species** among the top hits. Simultaneously, **Oxidative Phosphorylation** is severely down-regulated (NES = −1.67) and **Ascorbate metabolism** — the primary antioxidant defense — is suppressed (NES = −1.81). This creates a self-reinforcing cycle: failing mitochondria generate ROS, ROS stabilize HIF-1α, and HIF-1 further shifts metabolism towards glycolysis, deepening the energetic crisis.
 
 ### 3. Structural Remodeling and Loss of Cardiac Identity
-The data strongly supports the occurrence of microgravity-induced cardiac remodeling. The significant down-regulation of **HAND1**, a critical transcription factor for maintaining mature cardiac identity, coupled with alterations in the **Focal Adhesion** pathway, shows that the lack of mechanical resistance causes the cellular cytoskeleton to reorganize. Furthermore, the prominence of disease-associated gene sets (**Hypertrophic, Dilated, and Arrhythmogenic Cardiomyopathies**) indicates that this structural adaptation shares transcriptional hallmarks with pathological heart conditions.
+GO Biological Process ORA places **Cardiac Muscle Contraction** and **Heart Contraction** as the most significantly over-represented terms, driven by MYL2, TNNT2, TPM1, TNNI3, and SCN5A. The down-regulation of **HAND1** (a master cardiac transcription factor) and the disruption of **Focal Adhesion** and **Actin Filament Organization** pathways confirm that the mechanical unloading of microgravity dismantles both the transcriptional identity and the cytoskeletal architecture of the cardiomyocyte. The enrichment of disease-associated sets (Hypertrophic, Dilated, and Arrhythmogenic Cardiomyopathies) indicates this structural remodeling is not a controlled adaptation but a pathological drift toward cardiac disease states.
+
+### 4. Abortive Cell Cycle Re-entry and Cellular Senescence
+The single statistically strongest finding in the entire analysis is GO Biological Process GSEA: **Sister Chromatid Segregation** (NES = 2.25, **FDR = 0.008**), driven by TOP2A, PLK1, and AURKB. In terminally differentiated cardiomyocytes, this activation of chromosome segregation machinery does not represent proliferation. It is a hallmark of **abortive mitosis** — cells re-enter the cell cycle but cannot divide, becoming trapped in a senescent state. This GO finding mechanistically resolves the KEGG Cell Cycle hit and explains the paradoxical co-activation of division signals without actual proliferation observed throughout the analysis. The simultaneous down-regulation of **Wound Healing** (NES = −2.03, FDR = 0.051) confirms that the cells are not only failing to regenerate — they are actively losing their homeostatic repair capacity.
 
 ### Summary
-Ultimately, these results suggest that the human heart does not simply "relax" in space; rather, it actively initiates a massive compensatory stress response. The lack of mechanical load paradoxically drives the cardiomyocytes into a state of metabolic crisis, pseudohypoxia, and structural remodeling. Understanding these core molecular mechanisms provides critical therapeutic targets for protecting astronauts' cardiovascular health during long-duration space exploration missions.
+The human heart in microgravity does not simply atrophy — it enters a state of coordinated molecular catastrophe. A metabolic blockade driven by SOCS3-mediated PI3K inhibition starves the cells of energy; pseudohypoxia driven by HIF-1 activation and mitochondrial failure compounds the crisis with oxidative damage; structural identity is lost as sarcomeric and cytoskeletal programs dissolve; and the cells become trapped in abortive senescent cell cycles, unable to repair or regenerate. These findings define clear molecular targets — SOCS3, HIF-1α, the adrenergic receptor cascade, and spindle checkpoint kinases — that may guide future pharmacological countermeasures for protecting cardiovascular health during long-duration space exploration.

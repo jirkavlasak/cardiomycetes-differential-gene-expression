@@ -7,6 +7,11 @@ canonifyURLs = true
 # Specify the default content language.
 defaultContentLanguage = "en"
 
+[markup.goldmark.renderer]
+  unsafe = true
+
+ignoreLogs = ['warning-goldmark-raw-html']
+
 [params]
 # (Optional) Set source repository location.
 # repository = "https://github.com/jirka-vlasak/space-heart-rnaseq"

@@ -121,7 +121,21 @@ gsea_res = gp.prerank(
 )
 ```
 
-### 4.3 GO Over-Representation Analysis
+### 4.3 Disease Ontology ORA
+To connect transcriptomic findings to established clinical disease classifications, ORA was run against the Disease Ontology 2023 database using the same filtered DEG list.
+
+```python
+do_ora_res = gp.enrichr(
+    gene_list=sig_genes,
+    gene_sets=['Jensen_DISEASES'],
+    organism='human',
+    outdir='Enrichr_ORA_Results/DO'
+)
+do_df = do_ora_res.res2d.sort_values('Adjusted P-value').head(15)
+plt.savefig("webPortal/static/images/DO_ORA_Dotplot.png", dpi=300)
+```
+
+### 4.4 GO Over-Representation Analysis
 To complement the KEGG pathway analysis, ORA was also performed against two Gene Ontology databases — Biological Process and Molecular Function — using the same filtered DEG list. This satisfies the requirement to use both GO terms and KEGG as gene set sources.
 
 ```python

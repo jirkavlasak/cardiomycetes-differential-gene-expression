@@ -9,6 +9,20 @@ weight: 5
 
 **Reference Publication:** Hwang, H., et al. "Space microgravity increases expression of genes associated with proliferation and differentiation in human cardiac spheres." *npj Microgravity* (2023).
 
+### Head-to-Head Comparison: Hwang et al. vs. Our Re-Analysis
+
+| Biological Finding | Hwang et al. (2023) | Our Re-Analysis | Interpretation Divergence |
+|:---|:---|:---|:---|
+| **Adrenergic signaling** | Upregulated — linked to maturation | Upregulated (NES=1.64 KEGG, NES=1.98 GO) | **Same data, opposite conclusion:** we interpret it as a maladaptive stress response, not maturation |
+| **Cell cycle activation** | Upregulated CCND2 — interpreted as beneficial proliferation | Sister Chromatid Segregation NES=2.25, **FDR=0.008** | We identify abortive mitosis / senescence, not genuine growth |
+| **ECM reorganization** | Focal adhesion downregulated | Glycan degradation NES=−2.03, Wound Healing NES=−2.03 | Confirmed — but we add that repair capacity is simultaneously lost |
+| **Metabolic state** | Not specifically analyzed | Diabetic Cardiomyopathy NES=2.02, Insulin Resistance NES=1.93 | **Novel finding:** SOCS3/SOCS1-mediated PI3K blockade — metabolic crisis missed by original paper |
+| **Hypoxia response** | Not reported | HIF-1 NES=1.72, Cellular Response to Hypoxia in GO ORA | **Novel finding:** pseudohypoxia despite normoxic conditions |
+| **Antioxidant defense** | Not reported | Ascorbate metabolism NES=−1.81, ROS response in GO ORA | **Novel finding:** antioxidant collapse creating oxidative damage |
+| **Overall conclusion** | "Beneficial cardiac differentiation and growth" | "Profound stress response — metabolic crisis, pseudohypoxia, senescence" | Fundamentally divergent interpretation from identical raw data |
+
+---
+
 ### 1. The Common Ground: Shared Biological Discoveries
 Our custom bioinformatic pipeline successfully replicated the core transcriptomic shifts identified by the original authors. The alignment between our independent analysis and the published data validates the robustness of the dataset:
 
