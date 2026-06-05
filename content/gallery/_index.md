@@ -54,15 +54,13 @@ The up-regulation of **MAP Kinase Phosphatase Activity (NES = 1.74)** — driven
 
 ---
 
----
+### Disease Association ORA (Jensen DISEASES)
+{{< figure src="/images/DO_ORA_Dotplot.png" alt="Disease Association ORA" class="img-medium" >}}
 
-### Disease Ontology ORA
-{{< figure src="/images/DO_ORA_Dotplot.png" alt="Disease Ontology ORA" class="img-medium" >}}
-
-**Enrichment Status:** ORA against Disease Ontology 2023 database
+**Enrichment Status:** ORA against Jensen DISEASES database (literature-mined gene–disease associations)
 
 **In-Depth Biological Interpretation:**
-The Disease Ontology ORA provides the most clinically direct interpretation of our findings. Unlike KEGG (which maps biochemical pathways) or GO (which describes molecular functions), the Disease Ontology directly links gene sets to named, classified human diseases. The enrichment of cardiomyopathy-related disease terms confirms that the microgravity transcriptome does not merely *resemble* a diseased state — it is, by formal ontological definition, expressing the gene signatures of established cardiac pathologies. This is the strongest possible translational argument: the same genes that distinguish diseased hearts from healthy ones are differentially expressed in cardiomyocytes after spaceflight. This finding has direct implications for astronaut health monitoring, suggesting that standard cardiac disease biomarkers could serve as early warning indicators of microgravity-induced cardiovascular deconditioning.
+The Jensen DISEASES ORA provides the most clinically direct interpretation of our findings. Unlike KEGG (which maps biochemical pathways) or GO (which describes molecular functions), the Jensen DISEASES database directly links gene sets to named, classified human diseases via literature mining. The enrichment of cardiomyopathy-related disease terms confirms that the microgravity transcriptome does not merely *resemble* a diseased state — it is, by formal ontological definition, expressing the gene signatures of established cardiac pathologies. This is the strongest possible translational argument: the same genes that distinguish diseased hearts from healthy ones are differentially expressed in cardiomyocytes after spaceflight. This finding has direct implications for astronaut health monitoring, suggesting that standard cardiac disease biomarkers could serve as early warning indicators of microgravity-induced cardiovascular deconditioning.
 
 ---
 
@@ -87,7 +85,7 @@ While the heatmaps, boxplots, and interactive tables highlight the most critical
 While the main report highlights the top 50 genes, this expanded heatmap of the top 500 most variable and significantly expressed genes illustrates the sheer scale of the transcriptomic reprogramming in microgravity. The striking structural divide between the 1G and uG samples demonstrates that the adaptation to spaceflight is not a localized pathway response, but a massive, genome-wide state shift affecting hundreds of interconnected gene networks simultaneously.
 
 
-# Supplementary Pathway Data
+## Supplementary KEGG Pathway Gallery
 Additional pathways identified during the *in silico* re-analysis.
 
 ### TGF-beta Signaling
@@ -201,19 +199,19 @@ The removal of natural geophysical zeitgebers in Low Earth Orbit, combined with 
 
 ### Glycolysis - Gluconeogenesis
 {{< figure src="/images/Glycolysis%20-%20Gluconeogenesis.png" alt="Glycolysis" class="img-medium" >}}
-**Enrichment Status:** 🔴 Up-regulated
+**Enrichment Status:** 🔴 Up-regulated (NES: 1.15, FDR = 0.568)
 **In-Depth Biological Interpretation:** The robust up-regulation of the glycolysis pathway serves as a direct, compensatory survival mechanism in response to microgravity-induced mitochondrial dysfunction and pseudohypoxia. As cardiomyocytes lose their capacity for efficient oxidative phosphorylation, they become heavily reliant on anaerobic glycolysis to meet their ATP demands. However, this metabolic shift is highly inefficient for terminally differentiated heart muscle cells and inevitably leads to the accumulation of toxic byproducts, further driving the pre-diabetic state and long-term functional decline of the tissue.
 
 ---
 
 ### Other glycan degradation
 {{< figure src="/images/Other%20glycan%20degradation.png" alt="Other glycan degradation" class="img-medium" >}}
-**Enrichment Status:** 🔵 Down-regulated (NES: -2.03)
-**In-Depth Biological Interpretation:** Representing the most severely down-regulated pathway in our dataset, the suppression of glycan degradation underscores a massive halt in standard extracellular matrix (ECM) turnover. In normal gravity, the mechanical beating of the heart requires continuous remodeling of the surrounding glycocalyx. The removal of this mechanical load in microgravity essentially "freezes" this remodeling process. This lack of healthy matrix turnover contributes directly to the stiffening of the cardiac tissue and disrupts proper mechanotransduction, ultimately impairing the mechanical elasticity of the astronauts' hearts.
+**Enrichment Status:** 🔵 Down-regulated (NES: -1.41, FDR = 0.442)
+**In-Depth Biological Interpretation:** Representing one of the down-regulated pathways in our dataset, the suppression of glycan degradation underscores a massive halt in standard extracellular matrix (ECM) turnover. In normal gravity, the mechanical beating of the heart requires continuous remodeling of the surrounding glycocalyx. The removal of this mechanical load in microgravity essentially "freezes" this remodeling process. This lack of healthy matrix turnover contributes directly to the stiffening of the cardiac tissue and disrupts proper mechanotransduction, ultimately impairing the mechanical elasticity of the astronauts' hearts.
 
 ---
 
 ### MicroRNAs in cancer
 {{< figure src="/images/MicroRNAs%20in%20cancer.png" alt="MicroRNAs in cancer" class="img-medium" >}}
-**Enrichment Status:** 🔴 Up-regulated
+**Enrichment Status:** 🔴 Up-regulated (NES: 1.31, FDR = 0.475)
 **In-Depth Biological Interpretation:** While seemingly unrelated to cardiac tissue, the enrichment of "MicroRNAs in cancer" pathways highlights a massive shift in post-transcriptional regulation within the stressed cardiomyocytes. Microgravity induces the expression of powerful non-coding RNAs (such as BANCR) and suppresses key RNA helicases (like DDX5) to alter protein translation rapidly. This indicates that the heart is utilizing highly conserved, stress-induced epigenetic and RNA-interference mechanisms—often hijacked by oncogenic processes—to aggressively adapt its survival networks to the extreme environment of spaceflight.

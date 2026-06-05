@@ -98,7 +98,7 @@ Differential expression was modeled using the negative binomial distribution pro
 ### 3.2 Results Visualization
 The global transcriptional response is visualized via a Volcano Plot and a heatmap of the most significant Differentially Expressed Genes (DEGs).
 
-**Volcano Plot:** The plot reveals a massive transcriptomic shift — applying thresholds of FDR < 0.05 and |LFC| > 1.0, we identified hundreds of significantly altered genes. The visible asymmetry towards up-regulation (red dots) suggests that microgravity triggers an active cellular stress response rather than just a passive degradation of transcripts.
+**Volcano Plot:** The plot reveals a massive transcriptomic shift — applying thresholds of FDR < 0.05 and |LFC| > 1.0, we identified hundreds of significantly altered genes. The visible asymmetry towards **down-regulation** (blue dots, 798 genes) over up-regulation (436 genes) suggests that microgravity primarily silences homeostatic and structural programs rather than simply triggering active stress responses.
 
 {{< figure src="/images/Volcano_plot_cardiomyocytes.png" alt="Volcano Plot" class="img-medium" >}}
 
@@ -122,6 +122,7 @@ The boxplots validate the high statistical significance reported by DESeq2:
 ### 3.4 Detailed DEGs Table
 
 [The full list of 100 most significant genes can be explored in the interactive table](/cardiomycetes-differential-gene-expression/reports/Top100_DEGs_Table.html)
+
 ---
 
 ## 4. Functional Enrichment Analysis

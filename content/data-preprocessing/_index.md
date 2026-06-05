@@ -8,13 +8,13 @@ weight: 2
 
 Before executing the computational pipeline, it is crucial to understand the origin and experimental design of the dataset. The data utilized in this project was retrieved from the NCBI Sequence Read Archive (SRA) under BioProject **PRJNA947970**. 
 
-###  Dataset Overview
+### Dataset Overview
 The dataset comprises 12 high-depth transcriptomic samples of human induced pluripotent stem cell-derived cardiomyocytes (hiPSC-CMs), cultured as cardiac spheroids. The sequencing was performed using the **Illumina NovaSeq 6000** platform, producing Single-End RNA-Seq reads.
 
 The core objective of the experiment is to investigate the effects of spaceflight and microgravity on cardiac muscle cells. The 12 samples are evenly divided into two distinct experimental conditions:
 
 **ISS uG (Microgravity):** 6 samples (SRR23949301 – SRR23949306) cultured aboard the International Space Station under true microgravity.
-**ISS 1G (Normal Gravity):** 6 samples (SRR23949295 – SRR23949300) cultured under standard 1G conditions, serving as the ground-truth control group.
+**ISS 1G (Normal Gravity):** 6 samples (SRR23949295 – SRR23949300) cultured under standard 1G conditions, serving as the ground control group.
 
 ```bash
 # Download raw single-end FASTQ files using SRA Toolkit and the manifest
@@ -25,8 +25,8 @@ while read SRR; do
 done < list_of_srrs.txt
 ```
 
-A rigorous bioinformatics pipeline was implemented to process 12 single-end Illumina RNA-Seq samples (SRR23949295 – SRR23949306). The core objective is to investigate the effects of spaceflight and microgravity on cardiomyocyte transcriptome.
 To systematically fetch this data, we utilized the SRA Toolkit alongside the metadata manifest (`SraRunTable.csv`).
+
 ### Conceptual Pipeline Overview
 The diagram below visualizes the end-to-end data flow, illustrating how raw sequences are cleaned, validated, and quantified to generate a reliable gene expression matrix.
 {{< figure src="/images/diagram.png" alt="Pipeline Diagram" class="img-medium" >}}

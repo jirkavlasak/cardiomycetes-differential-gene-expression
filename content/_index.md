@@ -27,11 +27,11 @@ Use the top navigation menu to explore the different phases of our research:
 * **[Extended Gallery](/gallery/):** A deep dive into specific cellular pathways (e.g., TGF-beta, Adrenergic signaling, Oxidative stress) with highly detailed biological interpretations.
 * **[Methodology & Code](/methodology/):** The exact Python code, statistical logic, and visualizations used to transform raw counts into biological meaning.
 * **[Data Preprocessing](/data-preprocessing/):** The upstream quality control steps and multi-tool summaries ensuring data integrity prior to analysis.
-* **[AI Analysis & study comparsion](/ai-analysis/):** AI analysis of our biological analysis and interpretation on comaprsion of study results.
+* **[AI Analysis & Study Comparison](/ai-analysis/):** AI-assisted biological interpretation and comparison of our results with the original publication.
 
-### Where to find data and code ?
-Just follow this link to google drive.
-[**Google Drive with full data (raw, trimmed, RNA filtered, codes ,....**](https://drive.google.com/drive/folders/1d_qXQj8n-N5JepKf7TfNIGuQsnm-bhjl?usp=drive_link)
+### Where to find data and code?
+Just follow this link to Google Drive.
+[**Google Drive — full data (raw, trimmed, rRNA-filtered, code)**](https://drive.google.com/drive/folders/1d_qXQj8n-N5JepKf7TfNIGuQsnm-bhjl?usp=drive_link)
 
 ---
 *Developed as a Bioinformatics Semestral Project by **Jiří Vlasák** and **Tobias Krynek**.*

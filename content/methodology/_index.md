@@ -42,7 +42,7 @@ vst_df = pd.DataFrame(dds.layers['vst_counts'], index=dds.obs_names, columns=dds
 ### 2. Exploratory Data Analysis
 To assess biological replicate consistency and rule out technical batch effects, we performed Principal Component Analysis (PCA) and Hierarchical Clustering using the top 500 most variable genes. We evaluated three principal components to ensure accurate spatial representation of the samples.
 
-```Python 
+```python
 from sklearn.decomposition import PCA
 from scipy.spatial import distance
 import seaborn as sns
@@ -121,12 +121,12 @@ gsea_res = gp.prerank(
 )
 ```
 
-### 4.3 Disease Ontology ORA
-To connect transcriptomic findings to established clinical disease classifications, ORA was run against the Disease Ontology 2023 database using the same filtered DEG list.
+### 4.3 Disease Association ORA (Jensen DISEASES)
+To connect transcriptomic findings to established clinical disease classifications, ORA was run against the **Jensen DISEASES** database (literature-mined gene–disease associations) using the same filtered DEG list.
 
 ```python
 do_ora_res = gp.enrichr(
-    gene_list=sig_genes,
+    gene_list=sig_genes['Gene_Symbol'].tolist(),
     gene_sets=['Jensen_DISEASES'],
     organism='human',
     outdir='Enrichr_ORA_Results/DO'
@@ -140,7 +140,7 @@ To complement the KEGG pathway analysis, ORA was also performed against two Gene
 
 ```python
 go_ora_res = gp.enrichr(
-    gene_list=sig_genes,
+    gene_list=sig_genes['Gene_Symbol'].tolist(),
     gene_sets=['GO_Biological_Process_2023', 'GO_Molecular_Function_2023'],
     organism='human',
     outdir='Enrichr_ORA_Results/GO'
@@ -157,7 +157,7 @@ for go_db in ['GO_Biological_Process_2023', 'GO_Molecular_Function_2023']:
     plt.savefig(f"webPortal/static/images/{short}_ORA_Dotplot.png", dpi=300)
 ```
 
-### 4.4 GO Gene Set Enrichment Analysis
+### 4.5 GO Gene Set Enrichment Analysis
 Preranked GSEA was executed against GO Biological Process and GO Molecular Function databases using the same Wald-statistic ranked list as the KEGG GSEA. A horizontal barplot of the top 10 terms by |NES| was generated for each database as a summary visualization.
 
 ```python
